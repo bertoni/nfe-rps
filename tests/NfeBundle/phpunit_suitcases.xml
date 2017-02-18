@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.8/phpunit.xsd"
+         backupGlobals="false"
+         colors="true"
+         bootstrap="../../app/autoload.php"
+>
+     
+    <php>
+        <ini name="error_reporting" value="-1" />
+        <server name="KERNEL_DIR" value="../../app/" />
+    </php>
+         
+    <testsuites>
+        <testsuite name="ENTITY_LoteRps">
+            <file>Entity/LoteRps/LoteRpsSetTest.php</file>
+            <file>Entity/LoteRps/LoteRpsPersistTest.php</file>
+            <file>Entity/LoteRps/LoteRpsLoadTest.php</file>
+            <file>Entity/LoteRps/LoteRpsRemoveTest.php</file>
+        </testsuite>
+        <testsuite name="ENTITY_Rps">
+            <file>Entity/Rps/RpsSetTest.php</file>
+            <file>Entity/Rps/RpsPersistTest.php</file>
+            <file>Entity/Rps/RpsLoadTest.php</file>
+            <file>Entity/Rps/RpsRemoveTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>

@@ -1,0 +1,3 @@
+nfe_homepage:
+    path:     /
+    defaults: { _controller: NfeBundle:Default:index }

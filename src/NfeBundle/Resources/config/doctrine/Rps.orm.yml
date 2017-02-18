@@ -1,0 +1,274 @@
+# src/NfeBundle/Resources/config/doctrine/Rps.orm.yml
+NfeBundle\Entity\Rps:
+    type: entity
+    table: tb_rps
+    indexes:
+        idx_rps_data_emissao:
+            columns: [ data_emissao ]
+    id:
+        id_rps:
+            type: integer
+            length: 11
+            generator: { strategy: AUTO }
+            options:
+                unsigned: true
+    fields:
+        iss_retido:
+            type: integer
+            length: 1
+            nullable: false
+            options:
+                unsigned: true
+        tipo_rps:
+            type: integer
+            length: 1
+            nullable: false
+            options:
+                unsigned: true
+        opcao_pelo_simples:
+            type: integer
+            length: 1
+            nullable: false
+            options:
+                unsigned: true
+        status_rps:
+            type: integer
+            length: 1
+            nullable: false
+            options:
+                unsigned: true
+        tipo_identificao_tomador:
+            type: integer
+            length: 1
+            nullable: false
+            options:
+                unsigned: true
+        incentivo_cultural:
+            type: integer
+            length: 1
+            nullable: false
+            options:
+                unsigned: true
+        tipo_tributacao_servico:
+            type: integer
+            length: 2
+            nullable: false
+            options:
+                unsigned: true
+        regime_especial_tributacao:
+            type: integer
+            length: 2
+            nullable: false
+            options:
+                unsigned: true
+        uf_prestacao_servico:
+            type: text
+            length: 2
+            nullable: false
+            fixed: true
+        codigo_servico_federal:
+            type: text
+            length: 4
+            nullable: false
+            fixed: true
+        aliquota:
+            type: integer
+            length: 5
+            nullable: false
+            options:
+                unsigned: true
+        codigo_servico_municipal:
+            type: text
+            length: 6
+            nullable: false
+            fixed: true
+        identificacao_tomador:
+            type: integer
+            length: 14
+            nullable: false
+            options:
+                unsigned: true
+        valor_servicos:
+            type: integer
+            length: 15
+            nullable: false
+            options:
+                unsigned: true
+        data_emissao:
+            type: datetime
+            nullable: false
+        data_competencia:
+            type: datetime
+            nullable: false
+        cidade_prestacao_servico:
+            type: text
+            length: 50
+            nullable: false
+        discriminacao_servico:
+            type: text
+            nullable: false
+        uf_tomador:
+            type: text
+            length: 2
+            nullable: true
+            fixed: true
+        codigo_beneficio:
+            type: integer
+            length: 3
+            nullable: true
+            options:
+                unsigned: true
+        tipo_endereco_tomador:
+            type: text
+            length: 3
+            nullable: true
+        codigo_pais:
+            type: integer
+            length: 5
+            nullable: true
+            options:
+                unsigned: true
+        serie_rps:
+            type: text
+            length: 5
+            nullable: true
+        serie_rps_substituido:
+            type: text
+            length: 5
+            nullable: true
+        id_lote_rps:
+            type: integer
+            length: 6
+            nullable: true
+            options:
+                unsigned: true
+        cep_tomador:
+            type: text
+            length: 8
+            nullable: true
+            fixed: true
+        numero_endereco_tomador:
+            type: text
+            length: 10
+            nullable: true
+        telefone_tomador:
+            type: text
+            length: 11
+            nullable: true
+        numero_rps_susbtituido:
+            type: integer
+            length: 15
+            nullable: true
+            options:
+                unsigned: true
+        valor_iss:
+            type: integer
+            length: 15
+            nullable: true
+            options:
+                unsigned: true
+        valor_pis_pasep:
+            type: integer
+            length: 15
+            nullable: true
+            options:
+                unsigned: true
+        valor_outras_retencoes_federais:
+            type: integer
+            length: 15
+            nullable: true
+            options:
+                unsigned: true
+        valor_inss:
+            type: integer
+            length: 15
+            nullable: true
+            options:
+                unsigned: true
+        valor_irpj:
+            type: integer
+            length: 15
+            nullable: true
+            options:
+                unsigned: true
+        valor_cofins:
+            type: integer
+            length: 15
+            nullable: true
+            options:
+                unsigned: true
+        valor_csll:
+            type: integer
+            length: 15
+            nullable: true
+            options:
+                unsigned: true
+        valor_desconto_incondicionado:
+            type: integer
+            length: 15
+            nullable: true
+            options:
+                unsigned: true
+        valor_desconto_condicionado:
+            type: integer
+            length: 15
+            nullable: true
+            options:
+                unsigned: true
+        valor_deducoes:
+            type: integer
+            length: 15
+            nullable: true
+            options:
+                unsigned: true
+        inscricao_estadual_tomador:
+            type: text
+            length: 15
+            nullable: true
+        anotacao_responsabilidade_tecnica:
+            type: text
+            length: 15
+            nullable: true
+        codigo_obra:
+            type: text
+            length: 15
+            nullable: true
+        inscricao_municipal_tomador:
+            type: text
+            length: 15
+            nullable: true
+        identificacao_venda:
+            type: text
+            length: 50
+            nullable: true
+        cidade_tomador:
+            type: text
+            length: 50
+            nullable: true
+        complemento_endereco_tomador:
+            type: text
+            length: 60
+            nullable: true
+        bairro_tomador:
+            type: text
+            length: 72
+            nullable: true
+        email_tomador:
+            type: text
+            length: 80
+            nullable: true
+        nome_tomador:
+            type: text
+            length: 115
+            nullable: true
+        endereco_tomador:
+            type: text
+            length: 125
+            nullable: true
+    manyToOne:
+        lote_rps:
+          targetEntity: LoteRps
+          joinColumn:
+            name: id_lote_rps
+            referencedColumnName: id_lote_rps
+            onDelete: SET NULL

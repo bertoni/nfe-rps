@@ -1,0 +1,48 @@
+# src/NfeBundle/Resources/config/doctrine/LoteRps.orm.yml
+NfeBundle\Entity\LoteRps:
+    type: entity
+    table: tb_lote_rps
+    indexes:
+        idx_lote_rps_data_cadastro:
+            columns: [ data_cadastro ]
+        idx_lote_rps_enviado:
+            columns: [ enviado ]
+    id:
+        id_lote_rps:
+            type: integer
+            length: 6
+            generator: { strategy: AUTO }
+            options:
+                unsigned: true
+    fields:
+        enviado:
+            type: integer
+            length: 1
+            nullable: false
+            options:
+                unsigned: true
+        data_cadastro:
+            type: datetime
+            nullable: false
+        data_periodo_inicial:
+            type: datetime
+            nullable: true
+        data_periodo_final:
+            type: datetime
+            nullable: true
+        valor_total:
+            type: integer
+            length: 11
+            nullable: true
+        valor_deducao:
+            type: integer
+            length: 11
+            nullable: true
+        valor_iss:
+            type: integer
+            length: 11
+            nullable: true
+        valor_credito:
+            type: integer
+            length: 11
+            nullable: true

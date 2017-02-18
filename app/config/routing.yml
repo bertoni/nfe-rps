@@ -1,0 +1,3 @@
+nfe:
+    resource: "@NfeBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -234,9 +234,6 @@ class Rps
      */
     protected $discriminacao_servico;
     
-    
-    
-    
 
     /**
      * Get idRps
@@ -254,9 +251,16 @@ class Rps
      * @param integer $issRetido
      *
      * @return Rps
+     * @throws Exception
      */
     public function setIssRetido($issRetido)
     {
+        if (!strlen($issRetido)) {
+            throw new \Exception('ISS retido não informado');
+        }
+        if (!preg_match('/[0-1]{1}/', $issRetido)) {
+            throw new \Exception('ISS retido inválido');
+        }
         $this->iss_retido = $issRetido;
 
         return $this;
@@ -278,9 +282,16 @@ class Rps
      * @param integer $tipoRps
      *
      * @return Rps
+     * @throws Exception
      */
     public function setTipoRps($tipoRps)
     {
+        if (!strlen($tipoRps)) {
+            throw new \Exception('Tipo RPS não informado');
+        }
+        if (!preg_match('/[0-1]{1}/', $tipoRps)) {
+            throw new \Exception('Tipo RPS inválido');
+        }
         $this->tipo_rps = $tipoRps;
 
         return $this;
@@ -302,9 +313,16 @@ class Rps
      * @param integer $opcaoPeloSimples
      *
      * @return Rps
+     * @throws Exception
      */
     public function setOpcaoPeloSimples($opcaoPeloSimples)
     {
+        if (!strlen($opcaoPeloSimples)) {
+            throw new \Exception('Opção pelo Simples não informado');
+        }
+        if (!preg_match('/[0-1]{1}/', $opcaoPeloSimples)) {
+            throw new \Exception('Opção pelo Simples inválido');
+        }
         $this->opcao_pelo_simples = $opcaoPeloSimples;
 
         return $this;
@@ -326,9 +344,16 @@ class Rps
      * @param integer $statusRps
      *
      * @return Rps
+     * @throws Exception
      */
     public function setStatusRps($statusRps)
     {
+        if (!strlen($statusRps)) {
+            throw new \Exception('Status RPS não informado');
+        }
+        if (!preg_match('/[1-2]{1}/', $statusRps)) {
+            throw new \Exception('Status RPS inválido');
+        }
         $this->status_rps = $statusRps;
 
         return $this;
@@ -350,9 +375,16 @@ class Rps
      * @param integer $tipoIdentificaoTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setTipoIdentificaoTomador($tipoIdentificaoTomador)
     {
+        if (!strlen($tipoIdentificaoTomador)) {
+            throw new \Exception('Tipo Identificador do Tomador não informado');
+        }
+        if (!preg_match('/[1-2]{1}/', $tipoIdentificaoTomador)) {
+            throw new \Exception('Tipo Identificador do Tomador inválido');
+        }
         $this->tipo_identificao_tomador = $tipoIdentificaoTomador;
 
         return $this;
@@ -374,9 +406,16 @@ class Rps
      * @param integer $incentivoCultural
      *
      * @return Rps
+     * @throws Exception
      */
     public function setIncentivoCultural($incentivoCultural)
     {
+        if (!strlen($incentivoCultural)) {
+            throw new \Exception('Incentivo Cultural não informado');
+        }
+        if (!preg_match('/[0-1]{1}/', $incentivoCultural)) {
+            throw new \Exception('Incentivo Cultural inválido');
+        }
         $this->incentivo_cultural = $incentivoCultural;
 
         return $this;
@@ -398,9 +437,16 @@ class Rps
      * @param integer $tipoTributacaoServico
      *
      * @return Rps
+     * @throws Exception
      */
     public function setTipoTributacaoServico($tipoTributacaoServico)
     {
+        if (!strlen($tipoTributacaoServico)) {
+            throw new \Exception('Tipo da Tributação do Serviço não informado');
+        }
+        if (!preg_match('/[1-6]{1}/', $tipoTributacaoServico)) {
+            throw new \Exception('Tipo da Tributação do Serviço inválido');
+        }
         $this->tipo_tributacao_servico = $tipoTributacaoServico;
 
         return $this;
@@ -422,9 +468,16 @@ class Rps
      * @param integer $regimeEspecialTributacao
      *
      * @return Rps
+     * @throws Exception
      */
     public function setRegimeEspecialTributacao($regimeEspecialTributacao)
     {
+        if (!strlen($regimeEspecialTributacao)) {
+            throw new \Exception('Regime Especial da Tributação não informado');
+        }
+        if (!preg_match('/[0-6]{1}/', $regimeEspecialTributacao)) {
+            throw new \Exception('Regime Especial da Tributação inválido');
+        }
         $this->regime_especial_tributacao = $regimeEspecialTributacao;
 
         return $this;
@@ -446,10 +499,17 @@ class Rps
      * @param string $ufPrestacaoServico
      *
      * @return Rps
+     * @throws Exception
      */
     public function setUfPrestacaoServico($ufPrestacaoServico)
     {
-        $this->uf_prestacao_servico = $ufPrestacaoServico;
+        if (!strlen($ufPrestacaoServico)) {
+            throw new \Exception('UF da Prestação do Serviço não informado');
+        }
+        if (strlen($ufPrestacaoServico) != 2) {
+            throw new \Exception('UF da Prestação do Serviço inválido');
+        }
+        $this->uf_prestacao_servico = mb_convert_case($ufPrestacaoServico, MB_CASE_UPPER, 'UTF-8');
 
         return $this;
     }
@@ -470,9 +530,17 @@ class Rps
      * @param string $codigoServicoFederal
      *
      * @return Rps
+     * @throws Exception
      */
     public function setCodigoServicoFederal($codigoServicoFederal)
     {
+        $codigoServicoFederal = preg_replace('/[^0-9]/', '', $codigoServicoFederal);
+        if (!strlen($codigoServicoFederal)) {
+            throw new \Exception('Código do Serviço Federal não informado');
+        }
+        if (strlen($codigoServicoFederal) > 4) {
+            throw new \Exception('Código do Serviço Federal inválido');
+        }
         $this->codigo_servico_federal = $codigoServicoFederal;
 
         return $this;
@@ -494,9 +562,16 @@ class Rps
      * @param integer $aliquota
      *
      * @return Rps
+     * @throws Exception
      */
     public function setAliquota($aliquota)
     {
+        if (!strlen($aliquota)) {
+            throw new \Exception('Alíquota não informado');
+        }
+        if (!is_numeric($aliquota) || $aliquota < 0 || $aliquota > 99999) {
+            throw new \Exception('Alíquota inválida');
+        }
         $this->aliquota = $aliquota;
 
         return $this;
@@ -518,9 +593,17 @@ class Rps
      * @param string $codigoServicoMunicipal
      *
      * @return Rps
+     * @throws Exception
      */
     public function setCodigoServicoMunicipal($codigoServicoMunicipal)
     {
+        $codigoServicoMunicipal = preg_replace('/[^0-9]/', '', $codigoServicoMunicipal);
+        if (!strlen($codigoServicoMunicipal)) {
+            throw new \Exception('Código do Serviço Municipal não informado');
+        }
+        if (strlen($codigoServicoMunicipal) > 6) {
+            throw new \Exception('Código do Serviço Municipal inválido');
+        }
         $this->codigo_servico_municipal = $codigoServicoMunicipal;
 
         return $this;
@@ -542,9 +625,16 @@ class Rps
      * @param integer $identificacaoTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setIdentificacaoTomador($identificacaoTomador)
     {
+        if (!strlen($identificacaoTomador)) {
+            throw new \Exception('Identificação do Tomador não informado');
+        }
+        if (preg_match('/[^0-9]/', $identificacaoTomador)) {
+            throw new \Exception('Identificação do Tomador inválido');
+        }
         $this->identificacao_tomador = $identificacaoTomador;
 
         return $this;
@@ -566,9 +656,16 @@ class Rps
      * @param integer $valorServicos
      *
      * @return Rps
+     * @throws Exception
      */
     public function setValorServicos($valorServicos)
     {
+        if (!strlen($valorServicos)) {
+            throw new \Exception('Valor dos Serviços não informado');
+        }
+        if (!is_numeric($valorServicos) || $valorServicos < 0 || $valorServicos > 999999999999999) {
+            throw new \Exception('Valor dos Serviços inválido');
+        }
         $this->valor_servicos = $valorServicos;
 
         return $this;
@@ -587,11 +684,11 @@ class Rps
     /**
      * Set dataEmissao
      *
-     * @param \DateTime $dataEmissao
+     * @param DateTime $dataEmissao
      *
      * @return Rps
      */
-    public function setDataEmissao($dataEmissao)
+    public function setDataEmissao(\DateTime $dataEmissao)
     {
         $this->data_emissao = $dataEmissao;
 
@@ -601,7 +698,7 @@ class Rps
     /**
      * Get dataEmissao
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDataEmissao()
     {
@@ -611,11 +708,11 @@ class Rps
     /**
      * Set dataCompetencia
      *
-     * @param \DateTime $dataCompetencia
+     * @param DateTime $dataCompetencia
      *
      * @return Rps
      */
-    public function setDataCompetencia($dataCompetencia)
+    public function setDataCompetencia(\DateTime $dataCompetencia)
     {
         $this->data_competencia = $dataCompetencia;
 
@@ -625,7 +722,7 @@ class Rps
     /**
      * Get dataCompetencia
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDataCompetencia()
     {
@@ -638,9 +735,16 @@ class Rps
      * @param string $cidadePrestacaoServico
      *
      * @return Rps
+     * @throws Exception
      */
     public function setCidadePrestacaoServico($cidadePrestacaoServico)
     {
+        if (!strlen($cidadePrestacaoServico)) {
+            throw new \Exception('Cidade da Prestação do Serviço não informado');
+        }
+        if (strlen($cidadePrestacaoServico) > 50) {
+            throw new \Exception('Cidade da Prestação do Serviço inválido');
+        }
         $this->cidade_prestacao_servico = $cidadePrestacaoServico;
 
         return $this;
@@ -662,9 +766,13 @@ class Rps
      * @param string $discriminacaoServico
      *
      * @return Rps
+     * @throws Exception
      */
     public function setDiscriminacaoServico($discriminacaoServico)
     {
+        if (!strlen($discriminacaoServico)) {
+            throw new \Exception('Discriminação do Serviço não informado');
+        }
         $this->discriminacao_servico = $discriminacaoServico;
 
         return $this;
@@ -686,9 +794,13 @@ class Rps
      * @param string $ufTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setUfTomador($ufTomador)
     {
+        if (!is_null($ufTomador) && strlen($ufTomador) != 2) {
+            throw new \Exception('UF do Tomador inválido');
+        }
         $this->uf_tomador = $ufTomador;
 
         return $this;
@@ -710,9 +822,13 @@ class Rps
      * @param integer $codigoBeneficio
      *
      * @return Rps
+     * @throws Exception
      */
     public function setCodigoBeneficio($codigoBeneficio)
     {
+        if (!is_null($codigoBeneficio) && (!strlen($codigoBeneficio) || strlen($codigoBeneficio) > 3)) {
+            throw new \Exception('Código do Benefício inválido');
+        }
         $this->codigo_beneficio = $codigoBeneficio;
 
         return $this;
@@ -734,9 +850,13 @@ class Rps
      * @param string $tipoEnderecoTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setTipoEnderecoTomador($tipoEnderecoTomador)
     {
+        if (!is_null($tipoEnderecoTomador) && (!strlen($tipoEnderecoTomador) || strlen($tipoEnderecoTomador) > 3)) {
+            throw new \Exception('Tipo de Endereço do Tomador inválido');
+        }
         $this->tipo_endereco_tomador = $tipoEnderecoTomador;
 
         return $this;
@@ -758,9 +878,13 @@ class Rps
      * @param integer $codigoPais
      *
      * @return Rps
+     * @throws Exception
      */
     public function setCodigoPais($codigoPais)
     {
+        if (!is_null($codigoPais) && (!is_numeric($codigoPais) || $codigoPais < 0 || $codigoPais > 99999)) {
+            throw new \Exception('Código do País inválido');
+        }
         $this->codigo_pais = $codigoPais;
 
         return $this;
@@ -782,9 +906,13 @@ class Rps
      * @param string $serieRps
      *
      * @return Rps
+     * @throws Exception
      */
     public function setSerieRps($serieRps)
     {
+        if (!is_null($serieRps) && (!strlen($serieRps) || strlen($serieRps) > 5)) {
+            throw new \Exception('Série do RPS inválido');
+        }
         $this->serie_rps = $serieRps;
 
         return $this;
@@ -806,9 +934,13 @@ class Rps
      * @param string $serieRpsSubstituido
      *
      * @return Rps
+     * @throws Exception
      */
     public function setSerieRpsSubstituido($serieRpsSubstituido)
     {
+        if (!is_null($serieRpsSubstituido) && (!strlen($serieRpsSubstituido) || strlen($serieRpsSubstituido) > 5)) {
+            throw new \Exception('Série do RPS Substituído inválido');
+        }
         $this->serie_rps_substituido = $serieRpsSubstituido;
 
         return $this;
@@ -830,9 +962,13 @@ class Rps
      * @param integer $idLoteRps
      *
      * @return Rps
+     * @throws Exception
      */
     public function setIdLoteRps($idLoteRps)
     {
+        if (!is_null($idLoteRps) && (!is_numeric($idLoteRps) || $idLoteRps < 0 || $idLoteRps > 9999999999)) {
+            throw new \Exception('Id do Lote de RPS inválido');
+        }
         $this->id_lote_rps = $idLoteRps;
 
         return $this;
@@ -854,9 +990,16 @@ class Rps
      * @param string $cepTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setCepTomador($cepTomador)
     {
+        if (!is_null($cepTomador)) {
+            $cepTomador = preg_replace('/[^0-9]/', '', $cepTomador);
+            if (!is_numeric($cepTomador) || $cepTomador < 0 || $cepTomador > 99999999) {
+                throw new \Exception('CEP do Tomador inválido');
+            }
+        }
         $this->cep_tomador = $cepTomador;
 
         return $this;
@@ -878,9 +1021,15 @@ class Rps
      * @param string $numeroEnderecoTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setNumeroEnderecoTomador($numeroEnderecoTomador)
     {
+        if (!is_null($numeroEnderecoTomador)) {
+            if (strlen($numeroEnderecoTomador) > 10) {
+                throw new \Exception('Número do Endereço do Tamador inválido');
+            }
+        }
         $this->numero_endereco_tomador = $numeroEnderecoTomador;
 
         return $this;
@@ -902,9 +1051,15 @@ class Rps
      * @param string $telefoneTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setTelefoneTomador($telefoneTomador)
     {
+        if (!is_null($telefoneTomador)) {
+            if (strlen($telefoneTomador) > 11) {
+                throw new \Exception('Telefone do Tamador inválido');
+            }
+        }
         $this->telefone_tomador = $telefoneTomador;
 
         return $this;
@@ -926,9 +1081,15 @@ class Rps
      * @param integer $numeroRpsSusbtituido
      *
      * @return Rps
+     * @throws Exception
      */
     public function setNumeroRpsSusbtituido($numeroRpsSusbtituido)
     {
+        if (!is_null($numeroRpsSusbtituido)) {
+            if (!is_numeric($numeroRpsSusbtituido) || $numeroRpsSusbtituido < 0 || $numeroRpsSusbtituido > 999999999999999) {
+                throw new \Exception('Número do RPS substituído inválido');
+            }
+        }
         $this->numero_rps_susbtituido = $numeroRpsSusbtituido;
 
         return $this;
@@ -950,9 +1111,15 @@ class Rps
      * @param integer $valorIss
      *
      * @return Rps
+     * @throws Exception
      */
     public function setValorIss($valorIss)
     {
+        if (!is_null($valorIss)) {
+            if (!is_numeric($valorIss) || $valorIss < 0 || $valorIss > 999999999999999) {
+                throw new \Exception('Valor do ISS inválido');
+            }
+        }
         $this->valor_iss = $valorIss;
 
         return $this;
@@ -974,9 +1141,15 @@ class Rps
      * @param integer $valorPisPasep
      *
      * @return Rps
+     * @throws Exception
      */
     public function setValorPisPasep($valorPisPasep)
     {
+        if (!is_null($valorPisPasep)) {
+            if (!is_numeric($valorPisPasep) || $valorPisPasep < 0 || $valorPisPasep > 999999999999999) {
+                throw new \Exception('Valor do PIS/PASEP inválido');
+            }
+        }
         $this->valor_pis_pasep = $valorPisPasep;
 
         return $this;
@@ -998,9 +1171,15 @@ class Rps
      * @param integer $valorOutrasRetencoesFederais
      *
      * @return Rps
+     * @throws Exception
      */
     public function setValorOutrasRetencoesFederais($valorOutrasRetencoesFederais)
     {
+        if (!is_null($valorOutrasRetencoesFederais)) {
+            if (!is_numeric($valorOutrasRetencoesFederais) || $valorOutrasRetencoesFederais < 0 || $valorOutrasRetencoesFederais > 999999999999999) {
+                throw new \Exception('Valor de outras Retenções Federais inválido');
+            }
+        }
         $this->valor_outras_retencoes_federais = $valorOutrasRetencoesFederais;
 
         return $this;
@@ -1022,9 +1201,15 @@ class Rps
      * @param integer $valorInss
      *
      * @return Rps
+     * @throws Exception
      */
     public function setValorInss($valorInss)
     {
+        if (!is_null($valorInss)) {
+            if (!is_numeric($valorInss) || $valorInss < 0 || $valorInss > 999999999999999) {
+                throw new \Exception('Valor do INSS inválido');
+            }
+        }
         $this->valor_inss = $valorInss;
 
         return $this;
@@ -1046,9 +1231,15 @@ class Rps
      * @param integer $valorIrpj
      *
      * @return Rps
+     * @throws Exception
      */
     public function setValorIrpj($valorIrpj)
     {
+        if (!is_null($valorIrpj)) {
+            if (!is_numeric($valorIrpj) || $valorIrpj < 0 || $valorIrpj > 999999999999999) {
+                throw new \Exception('Valor do IRPJ inválido');
+            }
+        }
         $this->valor_irpj = $valorIrpj;
 
         return $this;
@@ -1070,9 +1261,15 @@ class Rps
      * @param integer $valorCofins
      *
      * @return Rps
+     * @throws Exception
      */
     public function setValorCofins($valorCofins)
     {
+        if (!is_null($valorCofins)) {
+            if (!is_numeric($valorCofins) || $valorCofins < 0 || $valorCofins > 999999999999999) {
+                throw new \Exception('Valor do COFINS inválido');
+            }
+        }
         $this->valor_cofins = $valorCofins;
 
         return $this;
@@ -1094,9 +1291,15 @@ class Rps
      * @param integer $valorCsll
      *
      * @return Rps
+     * @throws Exception
      */
     public function setValorCsll($valorCsll)
     {
+        if (!is_null($valorCsll)) {
+            if (!is_numeric($valorCsll) || $valorCsll < 0 || $valorCsll > 999999999999999) {
+                throw new \Exception('Valor do CSLL inválido');
+            }
+        }
         $this->valor_csll = $valorCsll;
 
         return $this;
@@ -1118,9 +1321,15 @@ class Rps
      * @param integer $valorDescontoIncondicionado
      *
      * @return Rps
+     * @throws Exception
      */
     public function setValorDescontoIncondicionado($valorDescontoIncondicionado)
     {
+        if (!is_null($valorDescontoIncondicionado)) {
+            if (!is_numeric($valorDescontoIncondicionado) || $valorDescontoIncondicionado < 0 || $valorDescontoIncondicionado > 999999999999999) {
+                throw new \Exception('Valor do Desconto Incondicionado inválido');
+            }
+        }
         $this->valor_desconto_incondicionado = $valorDescontoIncondicionado;
 
         return $this;
@@ -1142,9 +1351,15 @@ class Rps
      * @param integer $valorDescontoCondicionado
      *
      * @return Rps
+     * @throws Exception
      */
     public function setValorDescontoCondicionado($valorDescontoCondicionado)
     {
+        if (!is_null($valorDescontoCondicionado)) {
+            if (!is_numeric($valorDescontoCondicionado) || $valorDescontoCondicionado < 0 || $valorDescontoCondicionado > 999999999999999) {
+                throw new \Exception('Valor do Desconto Condicionado inválido');
+            }
+        }
         $this->valor_desconto_condicionado = $valorDescontoCondicionado;
 
         return $this;
@@ -1166,9 +1381,15 @@ class Rps
      * @param integer $valorDeducoes
      *
      * @return Rps
+     * @throws Exception
      */
     public function setValorDeducoes($valorDeducoes)
     {
+        if (!is_null($valorDeducoes)) {
+            if (!is_numeric($valorDeducoes) || $valorDeducoes < 0 || $valorDeducoes > 999999999999999) {
+                throw new \Exception('Valor das Deduções inválido');
+            }
+        }
         $this->valor_deducoes = $valorDeducoes;
 
         return $this;
@@ -1190,9 +1411,15 @@ class Rps
      * @param string $inscricaoEstadualTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setInscricaoEstadualTomador($inscricaoEstadualTomador)
     {
+        if (!is_null($inscricaoEstadualTomador)) {
+            if (strlen($inscricaoEstadualTomador) > 15) {
+                throw new \Exception('Inscrição Estadual do Tomador inválida');
+            }
+        }
         $this->inscricao_estadual_tomador = $inscricaoEstadualTomador;
 
         return $this;
@@ -1214,9 +1441,15 @@ class Rps
      * @param string $anotacaoResponsabilidadeTecnica
      *
      * @return Rps
+     * @throws Exception
      */
     public function setAnotacaoResponsabilidadeTecnica($anotacaoResponsabilidadeTecnica)
     {
+        if (!is_null($anotacaoResponsabilidadeTecnica)) {
+            if (strlen($anotacaoResponsabilidadeTecnica) > 15) {
+                throw new \Exception('Anotação de Responsabilidade Técnica inválida');
+            }
+        }
         $this->anotacao_responsabilidade_tecnica = $anotacaoResponsabilidadeTecnica;
 
         return $this;
@@ -1238,9 +1471,15 @@ class Rps
      * @param string $codigoObra
      *
      * @return Rps
+     * @throws Exception
      */
     public function setCodigoObra($codigoObra)
     {
+        if (!is_null($codigoObra)) {
+            if (strlen($codigoObra) > 15) {
+                throw new \Exception('Código da Obra inválido');
+            }
+        }
         $this->codigo_obra = $codigoObra;
 
         return $this;
@@ -1262,9 +1501,15 @@ class Rps
      * @param string $inscricaoMunicipalTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setInscricaoMunicipalTomador($inscricaoMunicipalTomador)
     {
+        if (!is_null($inscricaoMunicipalTomador)) {
+            if (strlen($inscricaoMunicipalTomador) > 15) {
+                throw new \Exception('Inscrição Municipal do Tomador inválida');
+            }
+        }
         $this->inscricao_municipal_tomador = $inscricaoMunicipalTomador;
 
         return $this;
@@ -1286,9 +1531,15 @@ class Rps
      * @param string $identificacaoVenda
      *
      * @return Rps
+     * @throws Exception
      */
     public function setIdentificacaoVenda($identificacaoVenda)
     {
+        if (!is_null($identificacaoVenda)) {
+            if (strlen($identificacaoVenda) > 255) {
+                throw new \Exception('Identificação da Venda inválida');
+            }
+        }
         $this->identificacao_venda = $identificacaoVenda;
 
         return $this;
@@ -1310,9 +1561,15 @@ class Rps
      * @param string $cidadeTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setCidadeTomador($cidadeTomador)
     {
+        if (!is_null($cidadeTomador)) {
+            if (strlen($cidadeTomador) > 50) {
+                throw new \Exception('Cidade do Tomador inválida');
+            }
+        }
         $this->cidade_tomador = $cidadeTomador;
 
         return $this;
@@ -1334,9 +1591,15 @@ class Rps
      * @param string $complementoEnderecoTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setComplementoEnderecoTomador($complementoEnderecoTomador)
     {
+        if (!is_null($complementoEnderecoTomador)) {
+            if (strlen($complementoEnderecoTomador) > 60) {
+                throw new \Exception('Complemento do Endereço do Tomador inválido');
+            }
+        }
         $this->complemento_endereco_tomador = $complementoEnderecoTomador;
 
         return $this;
@@ -1358,9 +1621,15 @@ class Rps
      * @param string $bairroTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setBairroTomador($bairroTomador)
     {
+        if (!is_null($bairroTomador)) {
+            if (strlen($bairroTomador) > 72) {
+                throw new \Exception('Bairro do Tomador inválido');
+            }
+        }
         $this->bairro_tomador = $bairroTomador;
 
         return $this;
@@ -1382,9 +1651,15 @@ class Rps
      * @param string $emailTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setEmailTomador($emailTomador)
     {
+        if (!is_null($emailTomador)) {
+            if (strlen($emailTomador) > 80) {
+                throw new \Exception('E-mail do Tomador inválido');
+            }
+        }
         $this->email_tomador = $emailTomador;
 
         return $this;
@@ -1406,9 +1681,15 @@ class Rps
      * @param string $nomeTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setNomeTomador($nomeTomador)
     {
+        if (!is_null($nomeTomador)) {
+            if (strlen($nomeTomador) > 115) {
+                throw new \Exception('Nome do Tomador inválido');
+            }
+        }
         $this->nome_tomador = $nomeTomador;
 
         return $this;
@@ -1430,9 +1711,15 @@ class Rps
      * @param string $enderecoTomador
      *
      * @return Rps
+     * @throws Exception
      */
     public function setEnderecoTomador($enderecoTomador)
     {
+        if (!is_null($enderecoTomador)) {
+            if (strlen($enderecoTomador) > 125) {
+                throw new \Exception('Endereço do Tomador inválido');
+            }
+        }
         $this->endereco_tomador = $enderecoTomador;
 
         return $this;

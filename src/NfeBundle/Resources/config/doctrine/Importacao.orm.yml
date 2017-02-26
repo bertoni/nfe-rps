@@ -1,0 +1,25 @@
+# src/NfeBundle/Resources/config/doctrine/Importacao.orm.yml
+NfeBundle\Entity\Importacao:
+    type: entity
+    table: tb_importacao
+    indexes:
+        idx_importacao_data_importacao:
+            columns: [ data_importacao ]
+    id:
+        id_importacao:
+            type: integer
+            length: 6
+            generator: { strategy: AUTO }
+            options:
+                unsigned: true
+    fields:
+        data_importacao:
+            type: datetime
+            nullable: false
+        nome_arquivo:
+            type: text
+            length: 100
+            nullable: false
+        log:
+            type: text
+            nullable: true

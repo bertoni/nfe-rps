@@ -42,4 +42,9 @@ class CommomTest extends WebTestCase
      * @access protected
      */
     protected static $Rps;
+    /**
+     * @var    Importacao
+     * @access protected
+     */
+    protected static $Importacao;
 }

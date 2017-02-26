@@ -1,0 +1,51 @@
+<script src="{{ asset('bundles/nfe/js/jquery.gritter.min.js') }}"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+{% if app.session.flashbag.get('error') is defined %}
+    {% for error in app.session.flashbag.get('error') %}
+        addFlashMessage('error', '{{ error }}');
+    {% endfor %}
+{% endif %}
+{% if app.session.flashbag.get('success') is defined %}
+    {% for success in app.session.flashbag.get('success') %}
+        addFlashMessage('success', '{{ success }}');
+    {% endfor %}
+{% endif %}
+{% if app.session.flashbag.get('notice') is defined %}
+    {% for notice in app.session.flashbag.get('notice') %}
+        addFlashMessage('notice', '{{ notice }}');
+    {% endfor %}
+{% endif %}
+});
+
+function addFlashMessage(type, message) {
+    if (type != 'error' && type != 'success' && type != 'notice') {
+        type = 'notice';
+    }
+    var tit    = '';
+    var time   = 0;
+    var sticky = false;
+    switch (type) {
+        case 'error':
+            tit    = 'Houve um erro...';
+            time   = 8000;
+            sticky = true
+            break;
+        case 'success':
+            tit  = 'Sucesso!';
+            time = 4000;
+            break;
+        case 'notice':
+            tit  = 'Atenção.';
+            time = 5000;
+            break;
+    }
+    $.gritter.add({
+        title: tit,
+        text: message,
+        time: time,
+        sticky: sticky,
+        class_name: 'gritter-message-' + type
+    });
+}
+</script>

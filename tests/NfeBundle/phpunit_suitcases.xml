@@ -25,5 +25,15 @@
             <file>Entity/Rps/RpsLoadTest.php</file>
             <file>Entity/Rps/RpsRemoveTest.php</file>
         </testsuite>
+        <testsuite name="ENTITY_Importacao">
+            <file>Entity/Importacao/ImportacaoSetTest.php</file>
+            <file>Entity/Importacao/ImportacaoPersistTest.php</file>
+            <file>Entity/Importacao/ImportacaoLoadTest.php</file>
+            <file>Entity/Importacao/ImportacaoRemoveTest.php</file>
+        </testsuite>
+        
+        <testsuite name="BUSINESS_UploadRps">
+            <file>Business/UploadRpsProcessTest.php</file>
+        </testsuite>
     </testsuites>
 </phpunit>

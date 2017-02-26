@@ -73,6 +73,7 @@ class RpsLoadTest extends CommomTest
         $this->assertEquals($Rps->getCodigoServicoMunicipal(),          self::$Rps->getCodigoServicoMunicipal());
         $this->assertEquals($Rps->getIdentificacaoTomador(),            self::$Rps->getIdentificacaoTomador());
         $this->assertEquals($Rps->getValorServicos(),                   self::$Rps->getValorServicos());
+        $this->assertEquals($Rps->getDataCriacao(),                     self::$Rps->getDataCriacao());
         $this->assertEquals($Rps->getDataEmissao(),                     self::$Rps->getDataEmissao());
         $this->assertEquals($Rps->getDataCompetencia(),                 self::$Rps->getDataCompetencia());
         $this->assertEquals($Rps->getCidadePrestacaoServico(),          self::$Rps->getCidadePrestacaoServico());
@@ -85,6 +86,7 @@ class RpsLoadTest extends CommomTest
         $this->assertEquals($Rps->getSerieRpsSubstituido(),             self::$Rps->getSerieRpsSubstituido());
         $this->assertEquals($Rps->getIdLoteRps(),                       self::$Rps->getIdLoteRps());
         $this->assertEquals($Rps->getCepTomador(),                      self::$Rps->getCepTomador());
+        $this->assertEquals($Rps->getNumeroNf(),                        self::$Rps->getNumeroNf());
         $this->assertEquals($Rps->getNumeroEnderecoTomador(),           self::$Rps->getNumeroEnderecoTomador());
         $this->assertEquals($Rps->getTelefoneTomador(),                 self::$Rps->getTelefoneTomador());
         $this->assertEquals($Rps->getNumeroRpsSusbtituido(),            self::$Rps->getNumeroRpsSusbtituido());

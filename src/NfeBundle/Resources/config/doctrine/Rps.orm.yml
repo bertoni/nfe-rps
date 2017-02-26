@@ -94,6 +94,9 @@ NfeBundle\Entity\Rps:
             nullable: false
             options:
                 unsigned: true
+        data_criacao:
+            type: datetime
+            nullable: false
         data_emissao:
             type: datetime
             nullable: false
@@ -147,6 +150,12 @@ NfeBundle\Entity\Rps:
             length: 8
             nullable: true
             fixed: true
+        numero_nf:
+            type: integer
+            length: 10
+            nullable: true
+            options:
+                unsigned: true
         numero_endereco_tomador:
             type: text
             length: 10

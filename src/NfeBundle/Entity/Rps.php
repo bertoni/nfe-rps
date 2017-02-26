@@ -52,6 +52,10 @@ class Rps
     /**
      * @var DateTime
      */
+    protected $data_criacao;
+    /**
+     * @var DateTime
+     */
     protected $data_emissao;
     /**
      * @var integer
@@ -109,6 +113,10 @@ class Rps
      * @var string
      */
     protected $cep_tomador;
+    /**
+     * @var integer
+     */
+    protected $numero_nf;
     /**
      * @var string
      */
@@ -682,6 +690,30 @@ class Rps
     }
 
     /**
+     * Set dataCriacao
+     *
+     * @param DateTime $dataCriacao
+     *
+     * @return Rps
+     */
+    public function setDataCriacao(\DateTime $dataCriacao)
+    {
+        $this->data_criacao = $dataCriacao;
+    
+        return $this;
+    }
+
+    /**
+     * Get dataCriacao
+     *
+     * @return DateTime
+     */
+    public function getDataCriacao()
+    {
+        return $this->data_criacao;
+    }
+
+    /**
      * Set dataEmissao
      *
      * @param DateTime $dataEmissao
@@ -1013,6 +1045,37 @@ class Rps
     public function getCepTomador()
     {
         return $this->cep_tomador;
+    }
+
+    /**
+     * Set numeroNf
+     *
+     * @param integer $numeroNf
+     *
+     * @return Rps
+     * @throws Exception
+     */
+    public function setNumeroNf($numeroNf)
+    {
+        if (!is_null($numeroNf)) {
+            $numeroNf = preg_replace('/[^0-9]/', '', $numeroNf);
+            if (!is_numeric($numeroNf) || $numeroNf < 0 || $numeroNf > 9999999999) {
+                throw new \Exception('Número da NF inválido');
+            }
+        }
+        $this->numero_nf = $numeroNf;
+    
+        return $this;
+    }
+
+    /**
+     * Get numeroNf
+     *
+     * @return integer
+     */
+    public function getNumeroNf()
+    {
+        return $this->numero_nf;
     }
 
     /**

@@ -705,6 +705,15 @@ class RpsSetTest extends CommomTest
      * @access public
      * @return void
      */
+    public function testSetValidDataCriacao()
+    {
+        $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setDataCriacao(new \DateTime()));
+    }
+
+    /**
+     * @access public
+     * @return void
+     */
     public function testSetValidDataEmissao()
     {
         $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setDataEmissao(new \DateTime()));
@@ -1068,6 +1077,38 @@ class RpsSetTest extends CommomTest
     {
         $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setCepTomador(3169050));
         $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setCepTomador(null));
+    }
+
+    /**
+     * @expectedException Exception
+     *
+     * @access public
+     * @return void
+     */
+    public function testSetEmptyNumeroNF()
+    {
+        self::$Rps->setNumeroNf('');
+    }
+
+    /**
+     * @expectedException Exception
+     *
+     * @access public
+     * @return void
+     */
+    public function testSetLongNumeroNF()
+    {
+        self::$Rps->setNumeroNf(10000000000);
+    }
+
+    /**
+     * @access public
+     * @return void
+     */
+    public function testSetValidNumeroNF()
+    {
+        $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setNumeroNf(87976));
+        $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setNumeroNf(null));
     }
     
     /**

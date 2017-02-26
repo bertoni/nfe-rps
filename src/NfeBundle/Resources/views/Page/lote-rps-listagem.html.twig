@@ -1,0 +1,52 @@
+{% extends 'NfeBundle:Include:base.html.twig' %}
+
+{% block head %}
+    {{ include('NfeBundle:Include:head.html.twig', { 'head': { 'title': 'Lotes de RPS' } }) }}
+{% endblock %}
+
+{% set content %}
+    <h1>Lote de RPS</h1>
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Data de Cadastro</th>
+                    <th>Enviado</th>
+                    <th>Período Inicial</th>
+                    <th>Período Final</th>
+                    <th>Valor Total</th>
+                    <th>Valor Dedução</th>
+                    <th>Valor ISS</th>
+                    <th>Valor Crédito</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if loterps is defined and loterps is iterable and loterps|length > 0 %}
+                {% for lote in loterps %}
+                <tr>
+                    <td>{{lote.id_lote_rps}}</td>
+                    <td>{{lote.data_cadastro}}</td>
+                    <td>{% if lote.enviado == 0 %}Não{% else %}Sim{% endif %}</td>
+                    <td>{{lote.data_periodo_inicial}}</td>
+                    <td>{{lote.data_periodo_inicial}}</td>
+                    <td>{% if lote.valor_total != "" %}{{(lote.valor_total/100)|number_format(2, ',', '.')}}{% endif %}</td>
+                    <td>{% if lote.valor_deducao != "" %}{{(lote.valor_deducao/100)|number_format(2, ',', '.')}}{% endif %}</td>
+                    <td>{% if lote.valor_iss != "" %}{{(lote.valor_iss/100)|number_format(2, ',', '.')}}{% endif %}</td>
+                    <td>{% if lote.valor_credito != "" %}{{(lote.valor_credito/100)|number_format(2, ',', '.')}}{% endif %}</td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endset %}
+
+{% block body %}
+    {{ include('NfeBundle:Include:body.html.twig', {
+        'pageid': 'loterpslistagem',
+        'content': content
+    }) }}
+{% endblock %}

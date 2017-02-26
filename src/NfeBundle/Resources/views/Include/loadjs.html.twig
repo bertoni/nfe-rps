@@ -1,0 +1,12 @@
+<!-- JS -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="{{ asset('bundles/nfe/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('bundles/nfe/js/bootbox.min.js') }}"></script>
+<script src="{{ asset('bundles/nfe/js/default.js') }}"></script>
+{% if loadjs is defined %}
+    {% for src in loadjs %}
+    <script src="{{ asset(src) }}"></script>
+    {% endfor %}
+{% endif %}
+
+{{ include('NfeBundle:Include:flash-message.html.twig') }}

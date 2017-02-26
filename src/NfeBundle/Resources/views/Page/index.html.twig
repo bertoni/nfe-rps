@@ -1,0 +1,16 @@
+{% extends 'NfeBundle:Include:base.html.twig' %}
+
+{% block head %}
+    {{ include('NfeBundle:Include:head.html.twig', { 'head': { 'title': 'Shopping' } }) }}
+{% endblock %}
+
+{% set content %}
+    <h1>ENEM NFE Rockets!</h1>
+{% endset %}
+
+{% block body %}
+    {{ include('NfeBundle:Include:body.html.twig', {
+        'pageid': 'home',
+        'content': content
+    }) }}
+{% endblock %}

@@ -1,0 +1,7 @@
+fields:
+    0:
+        name: "Identificação Venda"
+        required: false
+        regex: "^.*$"
+        limit: 50
+        default: false

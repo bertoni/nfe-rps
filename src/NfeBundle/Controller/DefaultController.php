@@ -8,7 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        phpinfo();
-        /* return $this->render('NfeBundle:Default:index.html.twig'); */
+        return $this->render('NfeBundle:Page:index.html.twig');
     }
 }

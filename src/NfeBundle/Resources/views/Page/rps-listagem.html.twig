@@ -1,0 +1,78 @@
+{% extends 'NfeBundle:Include:base.html.twig' %}
+
+{% set loadjs = ['/bundles/nfe/js/rps-list.js'] %}
+
+{% block head %}
+    {{ include('NfeBundle:Include:head.html.twig', { 'head': { 'title': 'RPS' } }) }}
+{% endblock %}
+
+{% set content %}
+    <h1>RPS
+        <button class="btn btn-primary" id="import-rps" data-url="{{path('nfe_rps_upload_csv')}}"><i class="fa fa-file-excel-o"></i> Importar</button>
+    </h1>
+    
+    <div class="panel-group filter-registers">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title clearfix">
+                    <i class="fa fa-filter"></i> Filtrar Conteúdos
+                    <a data-toggle="collapse" href="#form-filter" aria-expanded="true">
+                        <i class="fa fa-angle-down pull-right"></i>
+                        <i class="fa fa-angle-up pull-right"></i>
+                    </a>
+                </h4>
+            </div>
+            <div id="form-filter" class="panel-collapse collapse in" aria-expanded="true" style="">
+                <form class="form-inline clearfix" role="form" id="admin-filter">
+                    <div class="col-xs-12 block-form">
+                        <div class="col-xs-12">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Cliente</th>
+                    <th>Serviço</th>
+                    <th>Valor</th>
+                    <th>Data Criação</th>
+                    <th>Lote</th>
+                    <th>data Emissão</th>
+                    <th>Série RPS</th>
+                    <th>Nº NF</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if rps is defined and rps is iterable and rps|length > 0 %}
+                {% for itemrps in rps %}
+                <tr>
+                    <td>{{itemrps.id_rps}}</td>
+                    <td>{{itemrps.nome_tomador}}</td>
+                    <td>{{itemrps.discriminacao_servico}}</td>
+                    <td>{{(itemrps.valor_servicos/100)|number_format(2, ',', '.')}}</td>
+                    <td>{{itemrps.data_criacao}}</td>
+                    <td>{{itemrps.id_lote_rps}}</td>
+                    <td>{{itemrps.data_emissao}}</td>
+                    <td>{{itemrps.serie_rps}}</td>
+                    <td>{{itemrps.numero_nf}}</td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endset %}
+
+{% block body %}
+    {{ include('NfeBundle:Include:body.html.twig', {
+        'pageid': 'rpslistagem',
+        'content': content
+    }) }}
+{% endblock %}

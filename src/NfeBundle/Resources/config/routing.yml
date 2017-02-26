@@ -1,3 +1,16 @@
-nfe_homepage:
+nfe_dashboard:
     path:     /
     defaults: { _controller: NfeBundle:Default:index }
+
+nfe_lote_rps_listagem:
+    path:     /lote-rps
+    defaults: { _controller: NfeBundle:LoteRPS:listagem }
+
+nfe_rps_listagem:
+    path:     /rps
+    defaults: { _controller: NfeBundle:RPS:listagem }
+
+nfe_rps_upload_csv:
+    path:     /upload-rps
+    defaults: { _controller: NfeBundle:RPS:uploadCsv }
+    

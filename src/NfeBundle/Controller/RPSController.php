@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Yaml\Yaml;
 use NfeBundle\Entity\Rps;
 use NfeBundle\Entity\Importacao;
+use \DateTime as DateTime;
 
 class RPSController extends Controller
 {
@@ -18,9 +19,10 @@ class RPSController extends Controller
         
         $rps = array();
         if (is_array($Rps) && count($Rps)) {
-            foreach ($itemRps as $Rps) {
+            foreach ($Rps as $itemRps) {
                 $rps[] = array(
                     'id_rps'                => $itemRps->getIdRps(),
+                    'identificacao_venda'   => $itemRps->getIdentificacaoVenda(),
                     'nome_tomador'          => $itemRps->getNomeTomador(),
                     'discriminacao_servico' => $itemRps->getDiscriminacaoServico(),
                     'valor_servicos'        => $itemRps->getValorServicos(),
@@ -61,8 +63,8 @@ class RPSController extends Controller
                     ->setNomeArquivo($newFile->getFilename());
                 
                 try {
-                    $this->getDoctrine()->getEntityManager()->persist($Importacao);
-                    $this->getDoctrine()->getEntityManager()->flush();
+                    $this->getDoctrine()->getManager()->persist($Importacao);
+                    $this->getDoctrine()->getManager()->flush();
                     
                     register_shutdown_function(
                         'NfeBundle\Business\UploadRpsProcess::staticProcessSheetRps',
@@ -75,6 +77,7 @@ class RPSController extends Controller
                     return $this->render('NfeBundle:Page:upload-csv-sucesso.html.twig');
                 } catch (\Exception $e) {
                     $erro .= '<li>Não foi possível fazer o upload do arquivo</li>';
+                    $erro .= '<li>' . $e->getMessage() . '</li>';
                 }
                 
             }

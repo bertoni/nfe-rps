@@ -18,6 +18,7 @@ use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 use Doctrine\ORM\EntityManager;
 use NfeBundle\Entity\Importacao;
 use NfeBundle\Entity\Rps;
+use \DateTime as DateTime;
 
 /**
  * Upload RPS Process class
@@ -65,13 +66,128 @@ class UploadRpsProcess
      */
     public static function staticProcessSheetRps(Importacao $Importacao, array $config, EntityManager $EntityManager, DebugLoggerInterface $Logger)
     {
+        $message = 'Iniciando processamento planilha';
         $Logger->info(
-            self::$name,
-            array(
-                'importacao' => $Importacao->getIdImportacao(), 'file' => $Importacao->getNomeArquivo(), 'info' => 'Iniciando processamento planilha'
-            )
+            self::$name, array('importacao' => $Importacao->getIdImportacao(), 'file' => $Importacao->getNomeArquivo(), 'info' => $message)
+        );
+        $Importacao->setLog($Importacao->getLog() . "\n" . $message);
+        
+        $file = __DIR__ . '/../Resources/public/upload/csv/' . $Importacao->getNomeArquivo();
+        
+        if (!is_file($file)) {
+            $message = 'O arquivo não existe';
+            $Logger->info(self::$name, array('importacao' => $Importacao->getIdImportacao(), 'info' => $message));
+            $Importacao->setLog($Importacao->getLog() . "\n" . $message);
+            $EntityManager->flush();
+            return false;
+        }
+        
+        if (($handle = fopen($file, "r")) !== false) {
+            $row = 0;
+            while (($data = fgetcsv($handle, 0, ';', '"')) !== false) {
+                $row++;
+                if ($row == 1) {
+                    continue;
+                }
+                $num = count($data);
+                if ($num != $config['field_validate']['num_field']) {
+                    $message = 'A linha ' . $row . ' possui apenas ' . $num . ' colunas, quando o corretor era ter '
+                        . $config['field_validate']['num_field'];
+                    $Logger->info(self::$name, array('importacao' => $Importacao->getIdImportacao(), 'info' => $message));
+                    $Importacao->setLog($Importacao->getLog() . "\n" . $message);
+                    continue;
+                }
+                
+                $message = 'A linha ' . $row . ' possui o numero correto de colunas';
+                $Logger->info(self::$name, array('importacao' => $Importacao->getIdImportacao(), 'info' => $message));
+                $Importacao->setLog($Importacao->getLog() . "\n" . $message);
+                
+                $Rps = new Rps();
+                for ($col=0; $col<$num; $col++) {
+                    $set    = true;
+                    $value  = (strlen($data[$col]) ? $data[$col] : $config['field_validate']['fields'][($col+1)]['default']);
+                    $method = $config['field_validate']['fields'][($col+1)]['method'];
+                    if ($config['field_validate']['fields'][($col + 1)]['required']) {
+                        if (!preg_match($config['field_validate']['fields'][($col + 1)]['regex'], $value)) {
+                            $message = 'A linha ' . $row . ' coluna ' . ($col+1) . ' (' . $config['field_validate']['fields'][($col+1)]['name'] . ') '
+                                . ' com valor ' . $value . ' nao possui um valor aceitavel';
+                            $Logger->info(
+                                self::$name,
+                                array('importacao' => $Importacao->getIdImportacao(), 'info' => $message)
+                            );
+                            $Importacao->setLog($Importacao->getLog() . "\n" . $message);
+                            $set = false;
+                        }
+                    }
+                    if (strlen($value) > $config['field_validate']['fields'][($col+1)]['limit']) {
+                        $message = 'A linha ' . $row . ' coluna ' . ($col+1) . ' (' . $config['field_validate']['fields'][($col+1)]['name'] . ') '
+                            . ' com valor ' . $value . ' possui ' . strlen($value)
+                            . ' caracteres, quando o limite era ' . $config['field_validate']['fields'][($col+1)]['limit'];
+                        $Logger->info(
+                            self::$name,
+                            array('importacao' => $Importacao->getIdImportacao(), 'info' => $message)
+                        );
+                        $Importacao->setLog($Importacao->getLog() . "\n" . $message);
+                        $value = substr($value, 0, $config['field_validate']['fields'][($col+1)]['limit']);
+                    }
+                    if (isset($config['field_validate']['fields'][($col+1)]['convert'])) {
+                        $convert = preg_replace('/\$value/', $value, $config['field_validate']['fields'][($col+1)]['convert']);
+                        eval('$value = ' . $convert . ';');
+                    }
+                    if ($set) {
+                        try {
+                            $Rps->$method($value);
+                        } catch (\Exception $e) {
+                            $Logger->info(self::$name, array('importacao' => $Importacao->getIdImportacao(), 'info' => $e->getMessage()));
+                            $Importacao->setLog($Importacao->getLog() . "\n" . $e->getMessage());
+                        }
+                        
+                    }
+                }
+                
+                try {
+                    $Rps->setDataCriacao(new DateTime())
+                        ->setSerieRps($config['field_default']['serie_rps'])
+                        ->setStatusRps($config['field_default']['status_rps']);
+                    
+                    $EntityManager->persist($Rps);
+                    $EntityManager->flush();
+                } catch (\Exception $e) {
+                    $Logger->info(self::$name, array('importacao' => $Importacao->getIdImportacao(), 'info' => $e->getMessage()));
+                    $Importacao->setLog($Importacao->getLog() . "\n" . $e->getMessage());
+                    
+                    if (!$EntityManager->isOpen()) {
+                        $EntityManager = $EntityManager->create(
+                            $EntityManager->getConnection(),
+                            $EntityManager->getConfiguration()
+                        );
+                    }
+                }
+            }
+            fclose($handle);
+        }
+        
+        $EntityManager = $EntityManager->create(
+            $EntityManager->getConnection(),
+            $EntityManager->getConfiguration()
         );
         
-        return false;
+        $log = $Importacao->getLog();
+        $Importacao = $EntityManager->getRepository('NfeBundle:Importacao')
+            ->find($Importacao->getIdImportacao());
+        $Importacao->setLog($log);
+        
+        
+        try {
+            $EntityManager->flush();
+        } catch (\Exception $e) {
+            $Logger->info(
+                self::$name,
+                array('importacao' => $Importacao->getIdImportacao(), 'info' => 'Erro na atualização do log da importação. ' . $e->getMessage())
+            );
+        }
+        
+        
+        return true;
     }
 }

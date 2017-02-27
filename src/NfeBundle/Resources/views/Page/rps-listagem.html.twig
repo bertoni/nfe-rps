@@ -39,12 +39,13 @@
                 <tr>
                     <th>#</th>
                     <th>Cliente</th>
+                    <th>Venda</th>
                     <th>Serviço</th>
                     <th>Valor</th>
                     <th>Data Criação</th>
-                    <th>Lote</th>
                     <th>data Emissão</th>
                     <th>Série RPS</th>
+                    <th>Lote</th>
                     <th>Nº NF</th>
                 </tr>
             </thead>
@@ -54,12 +55,13 @@
                 <tr>
                     <td>{{itemrps.id_rps}}</td>
                     <td>{{itemrps.nome_tomador}}</td>
+                    <td>{{itemrps.identificacao_venda}}</td>
                     <td>{{itemrps.discriminacao_servico}}</td>
                     <td>{{(itemrps.valor_servicos/100)|number_format(2, ',', '.')}}</td>
                     <td>{{itemrps.data_criacao}}</td>
-                    <td>{{itemrps.id_lote_rps}}</td>
                     <td>{{itemrps.data_emissao}}</td>
                     <td>{{itemrps.serie_rps}}</td>
+                    <td>{{itemrps.id_lote_rps}}</td>
                     <td>{{itemrps.numero_nf}}</td>
                     <td></td>
                 </tr>

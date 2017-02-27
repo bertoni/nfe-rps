@@ -79,7 +79,7 @@ class UploadRpsProcessTest extends KernelTestCase
      * @access public
      * @return void
      */
-    public function testSignature()
+    public function testProcessSheet()
     {
         $UploadRpsProcess  = new UploadRpsProcess();
         $was_processed     = $UploadRpsProcess->processSheetRps(self::$_Importacao, self::$_config, self::$_em, self::$_logger);

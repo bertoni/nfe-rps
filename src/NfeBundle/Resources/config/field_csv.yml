@@ -38,7 +38,7 @@ field_validate:
             name: "CPF ou CNPJ do Tomador de Serviços"
             required: true
             method: "setIdentificacaoTomador"
-            regex: "/^[0-9]{11,14}$/"
+            regex: "/^[0-9]{9,14}$/"
             limit: 14
             default: null
         6:
@@ -108,7 +108,7 @@ field_validate:
             name: "UF do Tomador"
             required: false
             method: "setUfTomador"
-            regex: "/^[a-zA-Z]{1,2}$/"
+            regex: "/^[a-zA-Z]{0,2}$/"
             limit: 2
             default: null
             convert: "strtoupper('$value')"

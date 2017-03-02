@@ -89,6 +89,9 @@ class UploadRpsProcess
                 if ($row == 1) {
                     continue;
                 }
+                
+                $Importacao->setLog($Importacao->getLog() . "\nIniciando a importação da linha " . $row);
+                
                 $num = count($data);
                 if ($num != $config['field_validate']['num_field']) {
                     $message = 'A linha ' . $row . ' possui apenas ' . $num . ' colunas, quando o corretor era ter '
@@ -100,7 +103,6 @@ class UploadRpsProcess
                 
                 $message = 'A linha ' . $row . ' possui o numero correto de colunas';
                 $Logger->info(self::$name, array('importacao' => $Importacao->getIdImportacao(), 'info' => $message));
-                $Importacao->setLog($Importacao->getLog() . "\n" . $message);
                 
                 $Rps = new Rps();
                 for ($col=0; $col<$num; $col++) {
@@ -154,7 +156,7 @@ class UploadRpsProcess
                     $EntityManager->flush();
                 } catch (\Exception $e) {
                     $Logger->info(self::$name, array('importacao' => $Importacao->getIdImportacao(), 'info' => $e->getMessage()));
-                    $Importacao->setLog($Importacao->getLog() . "\n" . $e->getMessage());
+                    $Importacao->setLog($Importacao->getLog() . "\n" . 'Não foi possível salvar a linha ' . $row);
                     
                     if (!$EntityManager->isOpen()) {
                         $EntityManager = $EntityManager->create(

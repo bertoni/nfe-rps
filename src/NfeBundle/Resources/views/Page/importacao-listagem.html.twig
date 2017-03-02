@@ -1,0 +1,41 @@
+{% extends 'NfeBundle:Include:base.html.twig' %}
+
+{% set loadjs = ['/bundles/nfe/js/importacao-list.js'] %}
+
+{% block head %}
+    {{ include('NfeBundle:Include:head.html.twig', { 'head': { 'title': 'Importações de RPS' } }) }}
+{% endblock %}
+
+{% set content %}
+    <h1>Importações de RPS</h1>
+    
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Data</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if importacao is defined and importacao is iterable and importacao|length > 0 %}
+                {% for itemimportacao in importacao %}
+                <tr>
+                    <td>{{itemimportacao.id_importacao}}</td>
+                    <td>{{itemimportacao.data_importacao}}</td>
+                    <td><a href="#" data-log="{{itemimportacao.log}}"><i class="fa fa-eye"></i> Ver LOG Importação</a></td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endset %}
+
+{% block body %}
+    {{ include('NfeBundle:Include:body.html.twig', {
+        'pageid': 'importacaolistagem',
+        'content': content
+    }) }}
+{% endblock %}

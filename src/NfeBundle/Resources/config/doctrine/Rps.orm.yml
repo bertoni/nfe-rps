@@ -7,7 +7,7 @@ NfeBundle\Entity\Rps:
             columns: [ data_emissao ]
     id:
         id_rps:
-            type: integer
+            type: bigint
             length: 11
             generator: { strategy: AUTO }
             options:
@@ -83,13 +83,13 @@ NfeBundle\Entity\Rps:
             nullable: false
             fixed: true
         identificacao_tomador:
-            type: integer
+            type: bigint
             length: 14
             nullable: false
             options:
                 unsigned: true
         valor_servicos:
-            type: integer
+            type: bigint
             length: 15
             nullable: false
             options:
@@ -151,7 +151,7 @@ NfeBundle\Entity\Rps:
             nullable: true
             fixed: true
         numero_nf:
-            type: integer
+            type: bigint
             length: 10
             nullable: true
             options:
@@ -165,67 +165,67 @@ NfeBundle\Entity\Rps:
             length: 11
             nullable: true
         numero_rps_susbtituido:
-            type: integer
+            type: bigint
             length: 15
             nullable: true
             options:
                 unsigned: true
         valor_iss:
-            type: integer
+            type: bigint
             length: 15
             nullable: true
             options:
                 unsigned: true
         valor_pis_pasep:
-            type: integer
+            type: bigint
             length: 15
             nullable: true
             options:
                 unsigned: true
         valor_outras_retencoes_federais:
-            type: integer
+            type: bigint
             length: 15
             nullable: true
             options:
                 unsigned: true
         valor_inss:
-            type: integer
+            type: bigint
             length: 15
             nullable: true
             options:
                 unsigned: true
         valor_irpj:
-            type: integer
+            type: bigint
             length: 15
             nullable: true
             options:
                 unsigned: true
         valor_cofins:
-            type: integer
+            type: bigint
             length: 15
             nullable: true
             options:
                 unsigned: true
         valor_csll:
-            type: integer
+            type: bigint
             length: 15
             nullable: true
             options:
                 unsigned: true
         valor_desconto_incondicionado:
-            type: integer
+            type: bigint
             length: 15
             nullable: true
             options:
                 unsigned: true
         valor_desconto_condicionado:
-            type: integer
+            type: bigint
             length: 15
             nullable: true
             options:
                 unsigned: true
         valor_deducoes:
-            type: integer
+            type: bigint
             length: 15
             nullable: true
             options:
@@ -281,3 +281,4 @@ NfeBundle\Entity\Rps:
             name: id_lote_rps
             referencedColumnName: id_lote_rps
             onDelete: SET NULL
+    repositoryClass: NfeBundle\Entity\RpsRepository

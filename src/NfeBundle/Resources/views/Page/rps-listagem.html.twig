@@ -8,7 +8,9 @@
 
 {% set content %}
     <h1>RPS
+        <button class="btn btn-primary" id="novo-lote-rps" data-url="{{path('nfe_lote_rps_criar')}}"><i class="fa fa-folder-open"></i> Gerar Lote RPS</button>
         <button class="btn btn-primary" id="import-rps" data-url="{{path('nfe_rps_upload_csv')}}"><i class="fa fa-file-excel-o"></i> Importar</button>
+        <a class="btn btn-primary" href="{{path('nfe_rps_importacao_listagem')}}"><i class="fa fa-archive"></i> Importações</a>
     </h1>
     
     <div class="panel-group filter-registers">
@@ -47,6 +49,7 @@
                     <th>Série RPS</th>
                     <th>Lote</th>
                     <th>Nº NF</th>
+                    <th>ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,7 +66,9 @@
                     <td>{{itemrps.serie_rps}}</td>
                     <td>{{itemrps.id_lote_rps}}</td>
                     <td>{{itemrps.numero_nf}}</td>
-                    <td></td>
+                    <td>
+                        <a class="btn btn-primary" href="{{path('nfe_rps_editar', {id: itemrps.id_rps})}}"><i class="fa fa-pencil"></i> Editar</button>
+                    </td>
                 </tr>
                 {% endfor %}
                 {% endif %}

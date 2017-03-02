@@ -1,5 +1,7 @@
 {% extends 'NfeBundle:Include:base.html.twig' %}
 
+{% set loadjs = ['/bundles/nfe/js/lote-rps-list.js'] %}
+
 {% block head %}
     {{ include('NfeBundle:Include:head.html.twig', { 'head': { 'title': 'Lotes de RPS' } }) }}
 {% endblock %}
@@ -35,7 +37,9 @@
                     <td>{% if lote.valor_deducao != "" %}{{(lote.valor_deducao/100)|number_format(2, ',', '.')}}{% endif %}</td>
                     <td>{% if lote.valor_iss != "" %}{{(lote.valor_iss/100)|number_format(2, ',', '.')}}{% endif %}</td>
                     <td>{% if lote.valor_credito != "" %}{{(lote.valor_credito/100)|number_format(2, ',', '.')}}{% endif %}</td>
-                    <td></td>
+                    <td>
+                        <button class="btn btn-primary arquivo-lote-rps" data-url="{{path('nfe_lote_rps_arquivo', {id: lote.id_lote_rps})}}"><i class="fa fa-file-text-o"></i> Arquivo Lote RPS</button>
+                    </td>
                 </tr>
                 {% endfor %}
                 {% endif %}

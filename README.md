@@ -26,3 +26,8 @@ Rodar os Testes Unitários
 
 	./vendor/phpunit/phpunit/phpunit --colors=always -c app  src/PatientBundle/Tests/*
 	./vendor/phpunit/phpunit/phpunit --colors=always --configuration tests/NfeBundle/phpunit_suitcases.xml --testsuite ENTITY_LoteRps
+
+
+Limpa cache
+
+	php bin/console cache:clear

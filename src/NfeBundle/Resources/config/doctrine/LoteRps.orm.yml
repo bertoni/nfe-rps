@@ -31,18 +31,18 @@ NfeBundle\Entity\LoteRps:
             type: datetime
             nullable: true
         valor_total:
-            type: integer
+            type: bigint
             length: 11
             nullable: true
         valor_deducao:
-            type: integer
+            type: bigint
             length: 11
             nullable: true
         valor_iss:
-            type: integer
+            type: bigint
             length: 11
             nullable: true
         valor_credito:
-            type: integer
+            type: bigint
             length: 11
             nullable: true

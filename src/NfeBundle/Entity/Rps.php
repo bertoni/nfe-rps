@@ -830,7 +830,7 @@ class Rps
      */
     public function setUfTomador($ufTomador)
     {
-        if (!is_null($ufTomador) && strlen($ufTomador) != 2) {
+        if (!empty($ufTomador) && strlen($ufTomador) != 2) {
             throw new \Exception('UF do Tomador inválido');
         }
         $this->uf_tomador = $ufTomador;

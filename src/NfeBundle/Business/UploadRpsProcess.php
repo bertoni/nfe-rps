@@ -138,6 +138,11 @@ class UploadRpsProcess
                     }
                     if ($set) {
                         try {
+                            if (is_string($value) && !empty($value) && mb_strlen($value) != strlen($value)) {
+                                if (mb_check_encoding($value, 'UTF-8') === false) {
+                                    $value = utf8_encode($value);
+                                }
+                            }
                             $Rps->$method($value);
                         } catch (\Exception $e) {
                             $Logger->info(self::$name, array('importacao' => $Importacao->getIdImportacao(), 'info' => $e->getMessage()));

@@ -136,13 +136,13 @@ class UploadRpsProcess
                         $convert = preg_replace('/\$value/', $value, $config['field_validate']['fields'][($col+1)]['convert']);
                         eval('$value = ' . $convert . ';');
                     }
-                    if ($set) {
+		    if ($set) {
+			if (is_string($value)) {
+			    if (mb_check_encoding($value, 'UTF-8') === false) {
+			        $value = utf8_encode($value);
+			    }
+			}
                         try {
-                            if (is_string($value) && !empty($value) && mb_strlen($value) != strlen($value)) {
-                                if (mb_check_encoding($value, 'UTF-8') === false) {
-                                    $value = utf8_encode($value);
-                                }
-                            }
                             $Rps->$method($value);
                         } catch (\Exception $e) {
                             $Logger->info(self::$name, array('importacao' => $Importacao->getIdImportacao(), 'info' => $e->getMessage()));

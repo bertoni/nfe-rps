@@ -78,11 +78,11 @@ class NfTxt extends NfLayout
         $r .= str_pad($NfRps->getRegimeEspecial(), 2, '0', STR_PAD_LEFT);
         $r .= str_pad($NfRps->getOpcaoSimples(), 1, '0', STR_PAD_LEFT);
         $r .= str_pad($NfRps->getIncentivoCultural(), 1, '0', STR_PAD_LEFT);
-        $r .= str_pad($NfRps->getCodigoServicoFederal(), 4, ' ', STR_PAD_RIGHT);
+        $r .= str_pad($NfRps->getCodigoServicoFederal(), 4, '0', STR_PAD_LEFT);
         $r .= str_pad('', 6, ' ', STR_PAD_RIGHT);
         $r .= str_pad($NfRps->getCodigoPais(), 5, ' ', STR_PAD_LEFT);
         $r .= str_pad($NfRps->getCodigoBeneficio(), 3, ' ', STR_PAD_LEFT);
-        $r .= str_pad($NfRps->getCodigoServicoMunicipal(), 6, ' ', STR_PAD_RIGHT);
+        $r .= str_pad($NfRps->getCodigoServicoMunicipal(), 6, '0', STR_PAD_LEFT);
         $r .= str_pad($NfRps->getAliquota(), 5, '0', STR_PAD_LEFT);
         $r .= str_pad($NfRps->getValorServicos(), 15, '0', STR_PAD_LEFT);
         $r .= str_pad($NfRps->getValorDeducoes(), 15, '0', STR_PAD_LEFT);

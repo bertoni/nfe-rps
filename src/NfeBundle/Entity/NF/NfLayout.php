@@ -312,13 +312,5 @@ abstract class NfLayout
         }
     }
 
-    protected function removeAccent($text)
-    {
-        if (strlen($text)) {
-            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-        }
-        return $text;
-    }
-
     abstract public function process(NfRpsLote $NfRpsLote);
 }

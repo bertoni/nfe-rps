@@ -18,6 +18,7 @@ use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 use Doctrine\ORM\EntityManager;
 use NfeBundle\Entity\Importacao;
 use NfeBundle\Entity\Rps;
+use Stringy\Stringy;
 use \DateTime as DateTime;
 
 /**
@@ -107,7 +108,7 @@ class UploadRpsProcess
                 $Rps = new Rps();
                 for ($col=0; $col<$num; $col++) {
                     $set    = true;
-                    $value  = (strlen($data[$col]) ? $data[$col] : $config['field_validate']['fields'][($col+1)]['default']);
+                    $value  = trim(strlen($data[$col]) ? $data[$col] : $config['field_validate']['fields'][($col+1)]['default']);
                     $method = $config['field_validate']['fields'][($col+1)]['method'];
                     if ($config['field_validate']['fields'][($col + 1)]['required']) {
                         if (!preg_match($config['field_validate']['fields'][($col + 1)]['regex'], $value)) {
@@ -136,16 +137,17 @@ class UploadRpsProcess
                         $convert = preg_replace('/\$value/', $value, $config['field_validate']['fields'][($col+1)]['convert']);
                         eval('$value = ' . $convert . ';');
                     }
-		    if ($set) {
-			if (is_string($value)) {
-			    if (mb_check_encoding($value, 'UTF-8') === false) {
-			        $value = utf8_encode($value);
-			    }
-			}
+                    if ($set) {
+                        if (is_string($value) && !is_numeric($value) && !is_bool($value)) {
+                            if (mb_check_encoding($value, 'UTF-8') === false) {
+                                $value = utf8_encode($value);
+                            }
+                            $value = (string)Stringy::create($value)->toAscii();
+                        }
                         try {
                             $Rps->$method($value);
                         } catch (\Exception $e) {
-                            $Logger->info(self::$name, array('importacao' => $Importacao->getIdImportacao(), 'info' => $e->getMessage()));
+                            $Logger->info(self::$name, array('importacao' => $Importacao->getIdImportacao(), 'value' => $value, 'info' => $e->getMessage()));
                             $Importacao->setLog($Importacao->getLog() . "\n" . $e->getMessage());
                         }
                         

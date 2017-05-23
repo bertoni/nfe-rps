@@ -102,7 +102,7 @@ class NfTxt extends NfLayout
         $r .= str_pad($NfRps->getSerieRpsSubstituido(), 5, ' ', STR_PAD_RIGHT);
         $r .= str_pad($NfRps->getNumeroRpsSubstituido(), 15, ' ', STR_PAD_LEFT);
         $r .= str_pad('', 30, ' ', STR_PAD_RIGHT);
-        $r .= str_replace("\n", '|', str_replace("\r", '|', $this->removeAccent($NfRps->getDiscriminacaoServicos())));
+        $r .= str_replace("\n", '|', str_replace("\r", '|', $NfRps->getDiscriminacaoServicos()));
         $r .= chr(13).chr(10);
         return $r;
     }

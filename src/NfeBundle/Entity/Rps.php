@@ -114,6 +114,10 @@ class Rps
      */
     protected $cep_tomador;
     /**
+     * @var string
+     */
+    protected $codigo_verificacao;
+    /**
      * @var integer
      */
     protected $numero_nf;
@@ -241,7 +245,11 @@ class Rps
      * @var string
      */
     protected $discriminacao_servico;
-    
+    /**
+     * @var string
+     */
+    protected $link_nf;
+
 
     /**
      * Get idRps
@@ -699,7 +707,7 @@ class Rps
     public function setDataCriacao(\DateTime $dataCriacao)
     {
         $this->data_criacao = $dataCriacao;
-    
+
         return $this;
     }
 
@@ -1048,6 +1056,34 @@ class Rps
     }
 
     /**
+     * Set codigo_verificacao
+     *
+     * @param string $codigo_verificacao
+     *
+     * @return Rps
+     * @throws Exception
+     */
+    public function setCodigoVerificacao($codigo_verificacao)
+    {
+        if (!is_null($codigo_verificacao) && strlen($codigo_verificacao) > 9) {
+            throw new \Exception('Código de verificação inválido');
+        }
+        $this->codigo_verificacao = $codigo_verificacao;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo_verificacao
+     *
+     * @return string
+     */
+    public function getCodigoVerificacao()
+    {
+        return $this->codigo_verificacao;
+    }
+
+    /**
      * Set numeroNf
      *
      * @param integer $numeroNf
@@ -1064,7 +1100,7 @@ class Rps
             }
         }
         $this->numero_nf = $numeroNf;
-    
+
         return $this;
     }
 
@@ -1820,5 +1856,33 @@ class Rps
     public function getLoteRps()
     {
         return $this->lote_rps;
+    }
+
+    /**
+     * Set link_nf
+     *
+     * @param string $link_nf
+     *
+     * @return Rps
+     * @throws Exception
+     */
+    public function setLinkNf($link_nf)
+    {
+        if (!is_null($link_nf) && strlen($link_nf) > 255) {
+            throw new \Exception('Link da Nota Fiscal inválida');
+        }
+        $this->link_nf = $link_nf;
+
+        return $this;
+    }
+
+    /**
+     * Get link_nf
+     *
+     * @return string
+     */
+    public function getLinkNf()
+    {
+        return $this->link_nf;
     }
 }

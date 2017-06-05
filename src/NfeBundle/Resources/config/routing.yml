@@ -6,6 +6,11 @@ nfe_lote_rps_listagem:
     path:     /lote-rps
     defaults: { _controller: NfeBundle:LoteRPS:listagem }
 
+nfe_lote_rps_listagem_paginacao:
+    path:     /lote-rps/pagina/{page}
+    defaults: { _controller: NfeBundle:LoteRPS:listagemPaginacao }
+    requirements: {page: \d+}
+
 nfe_lote_rps_criar:
     path:     /lote-rps/criar
     defaults: { _controller: NfeBundle:LoteRPS:criar }
@@ -15,9 +20,20 @@ nfe_lote_rps_arquivo:
     defaults: { _controller: NfeBundle:LoteRPS:arquivo }
     requirements: {id: \d+}
 
+nfe_lote_rps_return:
+    path:     /lote-rps/retorno/{id}
+    defaults: { _controller: NfeBundle:LoteRPS:retorno }
+    requirements: {id: \d+}
+
+
 nfe_rps_listagem:
     path:     /rps
     defaults: { _controller: NfeBundle:RPS:listagem }
+
+nfe_rps_listagem_paginacao:
+    path:     /rps/pagina/{page}
+    defaults: { _controller: NfeBundle:RPS:listagemPaginacao }
+    requirements: {page: \d+}
 
 nfe_rps_editar:
     path:     /rps/{id}

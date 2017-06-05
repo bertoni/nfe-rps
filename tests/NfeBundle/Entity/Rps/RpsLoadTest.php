@@ -57,7 +57,7 @@ class RpsLoadTest extends CommomTest
         $Rps = self::$em->getRepository('NfeBundle:Rps')
             ->find(self::$Rps->getIdRps());
         $this->assertInstanceOf('NfeBundle\Entity\Rps', $Rps);
-    
+
         $this->assertEquals($Rps->getIdRps(),                           self::$Rps->getIdRps());
         $this->assertEquals($Rps->getIssRetido(),                       self::$Rps->getIssRetido());
         $this->assertEquals($Rps->getTipoRps(),                         self::$Rps->getTipoRps());
@@ -86,6 +86,7 @@ class RpsLoadTest extends CommomTest
         $this->assertEquals($Rps->getSerieRpsSubstituido(),             self::$Rps->getSerieRpsSubstituido());
         $this->assertEquals($Rps->getIdLoteRps(),                       self::$Rps->getIdLoteRps());
         $this->assertEquals($Rps->getCepTomador(),                      self::$Rps->getCepTomador());
+        $this->assertEquals($Rps->getCodigoVerificacao(),               self::$Rps->getCodigoVerificacao());
         $this->assertEquals($Rps->getNumeroNf(),                        self::$Rps->getNumeroNf());
         $this->assertEquals($Rps->getNumeroEnderecoTomador(),           self::$Rps->getNumeroEnderecoTomador());
         $this->assertEquals($Rps->getTelefoneTomador(),                 self::$Rps->getTelefoneTomador());
@@ -111,5 +112,6 @@ class RpsLoadTest extends CommomTest
         $this->assertEquals($Rps->getEmailTomador(),                    self::$Rps->getEmailTomador());
         $this->assertEquals($Rps->getNomeTomador(),                     self::$Rps->getNomeTomador());
         $this->assertEquals($Rps->getEnderecoTomador(),                 self::$Rps->getEnderecoTomador());
+        $this->assertEquals($Rps->getLinkNf(),                          self::$Rps->getLinkNf());
     }
 }

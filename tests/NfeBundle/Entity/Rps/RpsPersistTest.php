@@ -84,6 +84,7 @@ class RpsPersistTest extends CommomTest
                 ->setSerieRpsSubstituido('AB-1')
                 ->setIdLoteRps(1234)
                 ->setCepTomador(3169050)
+                ->setCodigoVerificacao('asdadas')
                 ->setNumeroNf(09798876)
                 ->setNumeroEnderecoTomador(101)
                 ->setTelefoneTomador(1121345678)
@@ -108,8 +109,9 @@ class RpsPersistTest extends CommomTest
                 ->setBairroTomador('Ibirapuera')
                 ->setEmailTomador('umemailvalid@gmail.com')
                 ->setNomeTomador('Tomador da Nota Fiscal')
-                ->setEnderecoTomador('Rua Dom Pedro II');
-            
+                ->setEnderecoTomador('Rua Dom Pedro II')
+                ->setLinkNf('https://notacarioca.rio.gov.br/nfse.aspx?ccm=123&nf=123&cod=123');
+
             self::$em->persist(self::$Rps);
             self::$em->flush();
         }

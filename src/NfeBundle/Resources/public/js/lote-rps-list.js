@@ -30,4 +30,12 @@ $(document).ready(function(){
 		});
 	});
 	
+	$(document).on('click', '.import-return', function(){
+		var iframe = $(this).attr('data-url');
+		bootbox.dialog({
+			title: 'Upload Retorno do RPS',
+		    message: '<iframe width="100%" height="100%" src="' + iframe + '" frameborder="0" scrolling="no"></iframe>'
+		});
+	});
+	
 });

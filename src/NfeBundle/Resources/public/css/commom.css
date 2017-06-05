@@ -43,6 +43,9 @@
 
 h1 .btn { float: right; margin-left: 10px; }
 
+.pagination { display: block; margin-top: 50px; text-align: center; }
+.pagination>li { display: inline-block; }
+
 #pageuploadrps { margin-top: 0; background-color: #fff; }
 form fieldset { margin: 15px 0; }
 form fieldset label { font-weight: bold; }

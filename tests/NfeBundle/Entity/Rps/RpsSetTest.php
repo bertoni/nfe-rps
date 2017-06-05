@@ -103,7 +103,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setTipoRps('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -114,7 +114,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setTipoRps(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -125,7 +125,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setTipoRps('abc');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -146,7 +146,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setOpcaoPeloSimples('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -157,7 +157,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setOpcaoPeloSimples(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -168,7 +168,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setOpcaoPeloSimples('abc');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -188,7 +188,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setStatusRps('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -199,7 +199,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setStatusRps(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -210,7 +210,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setStatusRps('abc');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -231,7 +231,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setTipoIdentificaoTomador('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -242,7 +242,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setTipoIdentificaoTomador(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -253,7 +253,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setTipoIdentificaoTomador('abc');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -274,7 +274,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setIncentivoCultural('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -285,7 +285,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setIncentivoCultural(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -296,7 +296,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setIncentivoCultural('abc');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -317,7 +317,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setTipoTributacaoServico('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -328,7 +328,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setTipoTributacaoServico(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -339,7 +339,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setTipoTributacaoServico('abc');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -364,7 +364,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setRegimeEspecialTributacao('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -375,7 +375,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setRegimeEspecialTributacao(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -386,7 +386,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setRegimeEspecialTributacao('abc');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -412,7 +412,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setUfPrestacaoServico('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -423,7 +423,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setUfPrestacaoServico(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -434,7 +434,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setUfPrestacaoServico('abc');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -454,7 +454,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCodigoServicoFederal('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -465,7 +465,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCodigoServicoFederal(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -476,7 +476,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCodigoServicoFederal('12333');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -497,7 +497,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setAliquota('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -508,7 +508,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setAliquota(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -541,7 +541,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setAliquota(100000);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -561,7 +561,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCodigoServicoMunicipal('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -572,7 +572,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCodigoServicoMunicipal(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -583,7 +583,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCodigoServicoMunicipal('1233312');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -604,7 +604,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setIdentificacaoTomador('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -615,7 +615,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setIdentificacaoTomador(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -626,7 +626,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setIdentificacaoTomador('abc');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -646,7 +646,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorServicos('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -657,7 +657,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorServicos(null);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -690,7 +690,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorServicos(1000000000000000);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -738,7 +738,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCidadePrestacaoServico('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -760,7 +760,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCidadePrestacaoServico('Cidade inválidao pois contém mais de cinquenta caracteres');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -780,7 +780,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setDiscriminacaoServico('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -791,7 +791,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setDiscriminacaoServico(null);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -799,17 +799,6 @@ class RpsSetTest extends CommomTest
     public function testSetValidDiscriminacaoServico()
     {
         $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setDiscriminacaoServico('Serviços Prestados.'));
-    }
-
-    /**
-     * @expectedException Exception
-     *
-     * @access public
-     * @return void
-     */
-    public function testSetEmptyUfTomador()
-    {
-        self::$Rps->setUfTomador('');
     }
 
     /**
@@ -843,7 +832,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCodigoBeneficio('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -854,7 +843,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCodigoBeneficio('1234');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -875,7 +864,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setTipoEnderecoTomador('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -886,7 +875,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setTipoEnderecoTomador('1234');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -907,7 +896,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCodigoPais('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -929,7 +918,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCodigoPais(100000);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -950,7 +939,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setSerieRps('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -961,7 +950,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setSerieRps('ABC123');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -982,7 +971,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setSerieRpsSubstituido('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -993,7 +982,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setSerieRpsSubstituido('ABC123');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1025,7 +1014,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setIdLoteRps(-10);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1036,7 +1025,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setIdLoteRps(10000000000);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1057,7 +1046,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCepTomador('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1068,7 +1057,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCepTomador(100000000);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1077,6 +1066,27 @@ class RpsSetTest extends CommomTest
     {
         $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setCepTomador(3169050));
         $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setCepTomador(null));
+    }
+
+    /**
+     * @expectedException Exception
+     *
+     * @access public
+     * @return void
+     */
+    public function testSetLongCodigoVerificacao()
+    {
+        self::$Rps->setCodigoVerificacao('asdu76yt54');
+    }
+
+    /**
+     * @access public
+     * @return void
+     */
+    public function testSetValidCodigoVerificacao()
+    {
+        $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setCodigoVerificacao('asdaww'));
+        $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setCodigoVerificacao(null));
     }
 
     /**
@@ -1110,7 +1120,7 @@ class RpsSetTest extends CommomTest
         $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setNumeroNf(87976));
         $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setNumeroNf(null));
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1121,7 +1131,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setNumeroEnderecoTomador('10282312344');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1142,7 +1152,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setTelefoneTomador('(11)12345678');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1174,7 +1184,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setNumeroRpsSusbtituido('abc');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1196,7 +1206,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setNumeroRpsSusbtituido(-10);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1217,7 +1227,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorIss('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1228,7 +1238,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorIss('abc');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1239,7 +1249,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorIss(1000000000000000);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1250,7 +1260,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorIss(-10);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1271,7 +1281,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorPisPasep('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1282,7 +1292,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorPisPasep('abc');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1293,7 +1303,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorPisPasep(1000000000000000);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1304,7 +1314,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorPisPasep(-10);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1325,7 +1335,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorOutrasRetencoesFederais('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1336,7 +1346,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorOutrasRetencoesFederais('abc');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1347,7 +1357,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorOutrasRetencoesFederais(1000000000000000);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1358,7 +1368,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorOutrasRetencoesFederais(-1);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1379,7 +1389,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorInss('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1390,7 +1400,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorInss('abc');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1401,7 +1411,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorInss(1000000000000000);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1412,7 +1422,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorInss(-1);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1433,7 +1443,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorIrpj('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1444,7 +1454,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorIrpj('abc');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1455,7 +1465,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorIrpj(1000000000000000);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1466,7 +1476,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorIrpj(-1);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1487,7 +1497,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorCofins('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1498,7 +1508,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorCofins('abc');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1509,7 +1519,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorCofins(1000000000000000);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1520,7 +1530,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorCofins(-1);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1541,7 +1551,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorCsll('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1552,7 +1562,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorCsll('abc');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1563,7 +1573,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorCsll(1000000000000000);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1574,7 +1584,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorCsll(-1);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1595,7 +1605,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorDescontoIncondicionado('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1606,7 +1616,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorDescontoIncondicionado('abc');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1617,7 +1627,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorDescontoIncondicionado(1000000000000000);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1628,7 +1638,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorDescontoIncondicionado(-1);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1649,7 +1659,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorDescontoCondicionado('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1660,7 +1670,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorDescontoCondicionado('abc');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1671,7 +1681,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorDescontoCondicionado(1000000000000000);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1682,7 +1692,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorDescontoCondicionado(-1);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1703,7 +1713,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorDeducoes('');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1714,7 +1724,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorDeducoes('abc');
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1725,7 +1735,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorDeducoes(1000000000000000);
     }
-    
+
     /**
      * @expectedException Exception
      *
@@ -1736,7 +1746,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setValorDeducoes(-1);
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1778,7 +1788,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setAnotacaoResponsabilidadeTecnica('1234567890123456');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1799,7 +1809,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCodigoObra('1234567890123456');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1820,7 +1830,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setInscricaoMunicipalTomador('1234567890123456');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1844,7 +1854,7 @@ class RpsSetTest extends CommomTest
             . 'ckj 10ijiajsoc aosc 10ic0c01jijcoakcj 01jc0ijscajsclkauc 0 oauhcoaic 0ijiajs piajsc j01j0 ca0icj0 odcja c0019u01u 0qas1u 91jn'
         );
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1865,7 +1875,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setCidadeTomador('Nome de cidade inválido pois contém mais de cinquenta caracteres');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1886,7 +1896,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setComplementoEnderecoTomador('Complemento de endereço inválido pois contém mais de sessenta caracteres');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1907,7 +1917,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setBairroTomador('Bairro do endereço do tomador inválido pois contém mais de setenta e dois caracteres');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1928,7 +1938,7 @@ class RpsSetTest extends CommomTest
     {
         self::$Rps->setEmailTomador('um e-mail inválido pois contém mais de oitenta caracteres para o tomador da nota fiscal');
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1951,7 +1961,7 @@ class RpsSetTest extends CommomTest
             'ajnsochq90oqisnoj sicjans0cj 9uhojn ocuha sijcn0 9uch isnc pasjmc9uhumwiasjcniajmc9u1h jnc paksc iuahs cunaon zijnc9a'
         );
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1974,7 +1984,7 @@ class RpsSetTest extends CommomTest
             'ajnsochq90oqisnoj sicjans0cj 9uhojn ocuha sijcn0 9uch isnc pasjmc9uhumwiasjcniajmc9u1h jnc paksc iuahs cunaon zijnc9a aos0ijas oc aos'
         );
     }
-    
+
     /**
      * @access public
      * @return void
@@ -1983,6 +1993,31 @@ class RpsSetTest extends CommomTest
     {
         $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setEnderecoTomador('Rua Dom Pedro II'));
         $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setEnderecoTomador(null));
+    }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage Link da Nota Fiscal inválida
+     *
+     * @access public
+     * @return void
+     */
+    public function testSetLongLinkNf()
+    {
+        self::$Rps->setLinkNf(
+            'aksnckanijqnicqnkjcnqincoqco9inconjiucncuqijsnciqhjbcijqciojncijasncuhyacuhbnknxoijqsncjuhavchyvasycgbqijscniqhbcvygvcygqvscyugqbvshcbq'
+            . 'cbvygsqvcyqgvcygqvcy6qtsvcygqsvcyqvcytqfstcfrqtsfvqhsqhsyugqfcytrqfctqvycgqvcuqvsytcfqy6tfcytqvcyqgyuqcy7qcytqsvcyqscwwww'
+        );
+    }
+
+    /**
+     * @access public
+     * @return void
+     */
+    public function testSetValidLinkNf()
+    {
+        $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setLinkNf('https://notacarioca.rio.gov.br/nfse.aspx?ccm=123&nf=123&cod=123'));
+        $this->assertInstanceOf('NfeBundle\Entity\Rps', self::$Rps->setLinkNf(null));
     }
 
 

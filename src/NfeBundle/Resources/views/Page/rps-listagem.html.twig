@@ -1,6 +1,6 @@
 {% extends 'NfeBundle:Include:base.html.twig' %}
 
-{% set loadjs = ['/bundles/nfe/js/rps-list.js'] %}
+{% set loadjs = ['/bundles/nfe/js/pagination.js', '/bundles/nfe/js/rps-list.js'] %}
 
 {% block head %}
     {{ include('NfeBundle:Include:head.html.twig', { 'head': { 'title': 'RPS' } }) }}
@@ -12,8 +12,8 @@
         <button class="btn btn-primary" id="import-rps" data-url="{{path('nfe_rps_upload_csv')}}"><i class="fa fa-file-excel-o"></i> Importar</button>
         <a class="btn btn-primary" href="{{path('nfe_rps_importacao_listagem')}}"><i class="fa fa-archive"></i> Importações</a>
     </h1>
-    
-    <div class="panel-group filter-registers">
+
+    <!--div class="panel-group filter-registers">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
@@ -33,10 +33,11 @@
                 </form>
             </div>
         </div>
-    </div>
-    
+    </div-->
+    <br><br>
+
     <div class="table-responsive">
-        <table class="table table-hover table-striped">
+        <table class="table table-hover table-striped" id="table-pagination">
             <thead>
                 <tr>
                     <th>#</th>
@@ -49,31 +50,22 @@
                     <th>Série RPS</th>
                     <th>Lote</th>
                     <th>Nº NF</th>
+                    <th>Cód. Verificação</th>
                     <th>ações</th>
                 </tr>
             </thead>
             <tbody>
-                {% if rps is defined and rps is iterable and rps|length > 0 %}
-                {% for itemrps in rps %}
-                <tr>
-                    <td>{{itemrps.id_rps}}</td>
-                    <td>{{itemrps.nome_tomador}}</td>
-                    <td>{{itemrps.identificacao_venda}}</td>
-                    <td>{{itemrps.discriminacao_servico}}</td>
-                    <td>{{(itemrps.valor_servicos/100)|number_format(2, ',', '.')}}</td>
-                    <td>{{itemrps.data_criacao}}</td>
-                    <td>{{itemrps.data_emissao}}</td>
-                    <td>{{itemrps.serie_rps}}</td>
-                    <td>{{itemrps.id_lote_rps}}</td>
-                    <td>{{itemrps.numero_nf}}</td>
-                    <td>
-                        <a class="btn btn-primary" href="{{path('nfe_rps_editar', {id: itemrps.id_rps})}}"><i class="fa fa-pencil"></i> Editar</button>
-                    </td>
-                </tr>
-                {% endfor %}
-                {% endif %}
+                {{ render(url('nfe_rps_listagem_paginacao', {'page': 0})) }}
             </tbody>
         </table>
+
+        <nav>
+          <ul class="pagination">
+            <li>
+              <a href="#" data-wrapper="table-pagination" data-url="{{ path('nfe_rps_listagem_paginacao', {'page': 0}) }}" data-page="1" data-label="Carregar mais registros">Carregar mais registros</a>
+            </li>
+          </ul>
+        </nav>
     </div>
 {% endset %}
 

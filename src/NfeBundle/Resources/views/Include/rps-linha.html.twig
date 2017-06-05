@@ -1,0 +1,21 @@
+<tr>
+  <td>{{itemrps.id_rps}}</td>
+  <td>{{itemrps.nome_tomador}}</td>
+  <td>{{itemrps.identificacao_venda}}</td>
+  <td>{{itemrps.discriminacao_servico}}</td>
+  <td>{{(itemrps.valor_servicos/100)|number_format(2, ',', '.')}}</td>
+  <td>{{itemrps.data_criacao}}</td>
+  <td>{{itemrps.data_emissao}}</td>
+  <td>{{itemrps.serie_rps}}</td>
+  <td>{{itemrps.id_lote_rps}}</td>
+  <td>{{itemrps.numero_nf}}</td>
+  <td>{{itemrps.codigo_verificacao}}</td>
+  <td>
+    <a class="btn btn-primary" href="{{path('nfe_rps_editar', {id: itemrps.id_rps})}}">
+      <i class="fa fa-{% if itemrps.numero_nf != "" %}eye{% else %}pencil{% endif %}"></i> {% if itemrps.numero_nf != "" %}Visualizar{% else %}Editar{% endif %}
+    </button>
+    {% if itemrps.numero_nf != "" %}
+    <a class="btn btn-default" target="_blank" href="{{itemrps.link_nf}}"><i class="fa fa-file-pdf-o"></i> Nota Fiscal</button>
+    {% endif %}
+  </td>
+</tr>

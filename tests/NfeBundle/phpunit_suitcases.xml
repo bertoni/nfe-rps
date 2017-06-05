@@ -6,34 +6,41 @@
          colors="true"
          bootstrap="../../app/autoload.php"
 >
-     
-    <php>
-        <ini name="error_reporting" value="-1" />
-        <server name="KERNEL_DIR" value="../../app/" />
-    </php>
-         
-    <testsuites>
-        <testsuite name="ENTITY_LoteRps">
-            <file>Entity/LoteRps/LoteRpsSetTest.php</file>
-            <file>Entity/LoteRps/LoteRpsPersistTest.php</file>
-            <file>Entity/LoteRps/LoteRpsLoadTest.php</file>
-            <file>Entity/LoteRps/LoteRpsRemoveTest.php</file>
-        </testsuite>
-        <testsuite name="ENTITY_Rps">
-            <file>Entity/Rps/RpsSetTest.php</file>
-            <file>Entity/Rps/RpsPersistTest.php</file>
-            <file>Entity/Rps/RpsLoadTest.php</file>
-            <file>Entity/Rps/RpsRemoveTest.php</file>
-        </testsuite>
-        <testsuite name="ENTITY_Importacao">
-            <file>Entity/Importacao/ImportacaoSetTest.php</file>
-            <file>Entity/Importacao/ImportacaoPersistTest.php</file>
-            <file>Entity/Importacao/ImportacaoLoadTest.php</file>
-            <file>Entity/Importacao/ImportacaoRemoveTest.php</file>
-        </testsuite>
-        
-        <testsuite name="BUSINESS_UploadRps">
-            <file>Business/UploadRpsProcessTest.php</file>
-        </testsuite>
-    </testsuites>
+
+  <php>
+    <ini name="error_reporting" value="-1" />
+    <server name="KERNEL_DIR" value="../../app/" />
+  </php>
+
+  <testsuites>
+    <testsuite name="ENTITY_LoteRps">
+      <file>Entity/LoteRps/LoteRpsSetTest.php</file>
+      <file>Entity/LoteRps/LoteRpsPersistTest.php</file>
+      <file>Entity/LoteRps/LoteRpsLoadTest.php</file>
+      <file>Entity/LoteRps/LoteRpsRemoveTest.php</file>
+    </testsuite>
+    <testsuite name="ENTITY_Rps">
+      <file>Entity/Rps/RpsSetTest.php</file>
+      <file>Entity/Rps/RpsPersistTest.php</file>
+      <file>Entity/Rps/RpsLoadTest.php</file>
+      <file>Entity/Rps/RpsRemoveTest.php</file>
+    </testsuite>
+    <testsuite name="ENTITY_Importacao">
+      <file>Entity/Importacao/ImportacaoSetTest.php</file>
+      <file>Entity/Importacao/ImportacaoPersistTest.php</file>
+      <file>Entity/Importacao/ImportacaoLoadTest.php</file>
+      <file>Entity/Importacao/ImportacaoRemoveTest.php</file>
+    </testsuite>
+    <testsuite name="ENTITY_NF">
+      <file>Entity/NF/NfReturnHeaderSetTest.php</file>
+      <file>Entity/NF/NfReturnFooterSetTest.php</file>
+      <file>Entity/NF/NfReturnRpsSetTest.php</file>
+      <file>Entity/NF/NfReturnLayoutCommonTxtSetTest.php</file>
+      <file>Entity/NF/NfExternalUrlSetTest.php</file>
+    </testsuite>
+
+    <testsuite name="BUSINESS_UploadRps">
+      <file>Business/UploadRpsProcessTest.php</file>
+    </testsuite>
+  </testsuites>
 </phpunit>

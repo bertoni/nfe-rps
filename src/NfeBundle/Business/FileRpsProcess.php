@@ -21,7 +21,6 @@ use NfeBundle\Entity\LoteRps;
 use NfeBundle\Entity\NF\NfRpsLote;
 use NfeBundle\Entity\NF\NfTxt;
 use NfeBundle\Entity\NF\NfRps;
-use \DateTime as DateTime;
 
 /**
  * File RPS Process class

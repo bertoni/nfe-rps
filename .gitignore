@@ -16,3 +16,6 @@
 /web/bundles/
 tests/NfeBundle/upload/*
 src/NfeBundle/Resources/public/upload/*
+.buildpath
+.project
+.settings/

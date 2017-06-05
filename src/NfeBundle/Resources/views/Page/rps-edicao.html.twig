@@ -8,231 +8,231 @@
 
 {% set content %}
     <h1>Editar RPS</h1>
-    
+
     <form action="#" method="POST">
         <input type="hidden" name="id" id="id" value="{{id}}" />
         <fieldset>
             <label for="identificacao-venda" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Identificação Venda</label>
-            <input type="text" name="identificacao-venda" id="identificacao-venda" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{identificacao_venda}}" maxlength="50" />
+            <input type="text" name="identificacao-venda" id="identificacao-venda" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{identificacao_venda}}" maxlength="50" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="tipo-rps" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Tipo RPS (*)</label>
             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
-                <label><input type="radio" name="tipo-rps" id="tipo-rps-0" required value="0"{% if tipo_rps == 0 %} checked="checked"{% endif %} /> Recibo provisório de Serviços (RPS)</label>
-                <label><input type="radio" name="tipo-rps" id="tipo-rps-1" required value="1"{% if tipo_rps == 1 %} checked="checked"{% endif %} /> Recibo provisório de Serviços proveniente de NF conjugada/Mista (RPS-M)</label>
+                <label><input type="radio" name="tipo-rps" id="tipo-rps-0" required value="0"{% if tipo_rps == 0 %} checked="checked"{% endif %} {% if allow_edit == false %}disabled="disabled"{% endif %} /> Recibo provisório de Serviços (RPS)</label>
+                <label><input type="radio" name="tipo-rps" id="tipo-rps-1" required value="1"{% if tipo_rps == 1 %} checked="checked"{% endif %} {% if allow_edit == false %}disabled="disabled"{% endif %} /> Recibo provisório de Serviços proveniente de NF conjugada/Mista (RPS-M)</label>
             </div>
         </fieldset>
         <fieldset>
             <label for="data-venda" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Data da Venda (*)</label>
-            <input type="text" name="data-venda" id="data-venda" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{data_venda}}" required maxlength="10" />
+            <input type="text" name="data-venda" id="data-venda" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{data_venda}}" required maxlength="10" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="tipo-identificacao-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Tipo de Identificação Tomador (*)</label>
             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
-                <label><input type="radio" name="tipo-identificacao-tomador" id="tipo-identificacao-tomador-1"{% if tipo_identificacao_tomador == 1 %} checked="checked"{% endif %} required value="1" /> CPF</label>
-                <label><input type="radio" name="tipo-identificacao-tomador" id="tipo-identificacao-tomador-2"{% if tipo_identificacao_tomador == 2 %} checked="checked"{% endif %} required value="2" /> CNPJ</label>
-                <label><input type="radio" name="tipo-identificacao-tomador" id="tipo-identificacao-tomador-3"{% if tipo_identificacao_tomador == 3 %} checked="checked"{% endif %} required value="3" /> Não informado</label>
+                <label><input type="radio" name="tipo-identificacao-tomador" id="tipo-identificacao-tomador-1"{% if tipo_identificacao_tomador == 1 %} checked="checked"{% endif %} required value="1" {% if allow_edit == false %}disabled="disabled"{% endif %} /> CPF</label>
+                <label><input type="radio" name="tipo-identificacao-tomador" id="tipo-identificacao-tomador-2"{% if tipo_identificacao_tomador == 2 %} checked="checked"{% endif %} required value="2" {% if allow_edit == false %}disabled="disabled"{% endif %} /> CNPJ</label>
+                <label><input type="radio" name="tipo-identificacao-tomador" id="tipo-identificacao-tomador-3"{% if tipo_identificacao_tomador == 3 %} checked="checked"{% endif %} required value="3" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Não informado</label>
             </div>
         </fieldset>
         <fieldset>
             <label for="identificacao-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Documento Tomador</label>
-            <input type="text" name="identificacao-tomador" id="identificacao-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{identificacao_tomador}}" maxlength="14" />
+            <input type="text" name="identificacao-tomador" id="identificacao-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{identificacao_tomador}}" maxlength="14" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="inscricao-municipal-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Inscrição Municipal Tomador</label>
-            <input type="text" name="inscricao-municipal-tomador" id="inscricao-municipal-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{inscricao_municipal_tomador}}" maxlength="15" />
+            <input type="text" name="inscricao-municipal-tomador" id="inscricao-municipal-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{inscricao_municipal_tomador}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="inscricao-estadual-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Inscrição Estadual Tomador</label>
-            <input type="text" name="inscricao-estadual-tomador" id="inscricao-estadual-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{inscricao_estadual_tomador}}" maxlength="15" />
+            <input type="text" name="inscricao-estadual-tomador" id="inscricao-estadual-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{inscricao_estadual_tomador}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="nome-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Nome Tomador</label>
-            <input type="text" name="nome-tomador" id="nome-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{nome_tomador}}" maxlength="115" />
+            <input type="text" name="nome-tomador" id="nome-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{nome_tomador}}" maxlength="115" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="tipo-endereco-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Tipo Endereço Tomador</label>
-            <input type="text" name="tipo-endereco-tomador" id="tipo-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{tipo_endereco_tomador}}" maxlength="3" />
+            <input type="text" name="tipo-endereco-tomador" id="tipo-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{tipo_endereco_tomador}}" maxlength="3" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="endereco-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Endereço Tomador</label>
-            <input type="text" name="endereco-tomador" id="endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{endereco_tomador}}" maxlength="125" />
+            <input type="text" name="endereco-tomador" id="endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{endereco_tomador}}" maxlength="125" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="numero-endereco-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Número Endereço Tomador</label>
-            <input type="text" name="numero-endereco-tomador" id="numero-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{numero_endereco_tomador}}" maxlength="10" />
+            <input type="text" name="numero-endereco-tomador" id="numero-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{numero_endereco_tomador}}" maxlength="10" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="complemento-endereco-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Complemento Endereço Tomador</label>
-            <input type="text" name="complemento-endereco-tomador" id="complemento-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{complemento_endereco_tomador}}" maxlength="60" />
+            <input type="text" name="complemento-endereco-tomador" id="complemento-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{complemento_endereco_tomador}}" maxlength="60" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="bairro-endereco-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Bairro Tomador</label>
-            <input type="text" name="bairro-endereco-tomador" id="bairro-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{bairro_endereco_tomador}}" maxlength="72" />
+            <input type="text" name="bairro-endereco-tomador" id="bairro-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{bairro_endereco_tomador}}" maxlength="72" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="cidade-endereco-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Cidade Tomador</label>
-            <input type="text" name="cidade-endereco-tomador" id="cidade-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{cidade_endereco_tomador}}" maxlength="50" />
+            <input type="text" name="cidade-endereco-tomador" id="cidade-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{cidade_endereco_tomador}}" maxlength="50" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="uf-endereco-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Estado Tomador</label>
-            <input type="text" name="uf-endereco-tomador" id="uf-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{uf_endereco_tomador}}" maxlength="2" />
+            <input type="text" name="uf-endereco-tomador" id="uf-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{uf_endereco_tomador}}" maxlength="2" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="cep-endereco-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">CEP Tomador</label>
-            <input type="text" name="cep-endereco-tomador" id="cep-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{cep_endereco_tomador}}" maxlength="8" />
+            <input type="text" name="cep-endereco-tomador" id="cep-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{cep_endereco_tomador}}" maxlength="8" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="telefone-endereco-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Telefone Tomador</label>
-            <input type="text" name="telefone-endereco-tomador" id="telefone-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{telefone_endereco_tomador}}" maxlength="11" />
+            <input type="text" name="telefone-endereco-tomador" id="telefone-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{telefone_endereco_tomador}}" maxlength="11" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="email-endereco-tomador" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">E-mail Tomador</label>
-            <input type="text" name="email-endereco-tomador" id="email-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{email_endereco_tomador}}" maxlength="80" />
+            <input type="text" name="email-endereco-tomador" id="email-endereco-tomador" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{email_endereco_tomador}}" maxlength="80" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="tipo-tributacao-servico" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Tipo de Tributação Serviço (*)</label>
             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
-                <label><input type="radio" name="tipo-tributacao-servico" id="tipo-tributacao-servico-1"{% if tipo_tributacao_servico == 1 %} checked="checked"{% endif %} required value="1" /> Tributação no Município</label>
-                <label><input type="radio" name="tipo-tributacao-servico" id="tipo-tributacao-servico-2"{% if tipo_tributacao_servico == 2 %} checked="checked"{% endif %} required value="2" /> Tributação fora do Município</label>
-                <label><input type="radio" name="tipo-tributacao-servico" id="tipo-tributacao-servico-3"{% if tipo_tributacao_servico == 3 %} checked="checked"{% endif %} required value="3" /> Operação Isenta</label>
-                <label><input type="radio" name="tipo-tributacao-servico" id="tipo-tributacao-servico-4"{% if tipo_tributacao_servico == 4 %} checked="checked"{% endif %} required value="4" /> Operação Imune</label>
-                <label><input type="radio" name="tipo-tributacao-servico" id="tipo-tributacao-servico-5"{% if tipo_tributacao_servico == 5 %} checked="checked"{% endif %} required value="5" /> Operação suspensa por decisão Judicial</label>
-                <label><input type="radio" name="tipo-tributacao-servico" id="tipo-tributacao-servico-6"{% if tipo_tributacao_servico == 6 %} checked="checked"{% endif %} required value="6" /> Operação suspensa por decisão Administrativa</label>
+                <label><input type="radio" name="tipo-tributacao-servico" id="tipo-tributacao-servico-1"{% if tipo_tributacao_servico == 1 %} checked="checked"{% endif %} required value="1" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Tributação no Município</label>
+                <label><input type="radio" name="tipo-tributacao-servico" id="tipo-tributacao-servico-2"{% if tipo_tributacao_servico == 2 %} checked="checked"{% endif %} required value="2" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Tributação fora do Município</label>
+                <label><input type="radio" name="tipo-tributacao-servico" id="tipo-tributacao-servico-3"{% if tipo_tributacao_servico == 3 %} checked="checked"{% endif %} required value="3" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Operação Isenta</label>
+                <label><input type="radio" name="tipo-tributacao-servico" id="tipo-tributacao-servico-4"{% if tipo_tributacao_servico == 4 %} checked="checked"{% endif %} required value="4" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Operação Imune</label>
+                <label><input type="radio" name="tipo-tributacao-servico" id="tipo-tributacao-servico-5"{% if tipo_tributacao_servico == 5 %} checked="checked"{% endif %} required value="5" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Operação suspensa por decisão Judicial</label>
+                <label><input type="radio" name="tipo-tributacao-servico" id="tipo-tributacao-servico-6"{% if tipo_tributacao_servico == 6 %} checked="checked"{% endif %} required value="6" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Operação suspensa por decisão Administrativa</label>
             </div>
         </fieldset>
         <fieldset>
             <label for="cidade-prestacao-servico" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Cidade Pestação Serviço (*)</label>
-            <input type="text" name="cidade-prestacao-servico" id="cidade-prestacao-servico" required class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{cidade_prestacao_servico}}" maxlength="50" />
+            <input type="text" name="cidade-prestacao-servico" id="cidade-prestacao-servico" required class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{cidade_prestacao_servico}}" maxlength="50" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="uf-prestacao-servico" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Estado Pestação Serviço (*)</label>
-            <input type="text" name="uf-prestacao-servico" id="uf-prestacao-servico" value="{{uf_prestacao_servico}}" required class="col-xs-12 col-sm-8 col-md-8 col-lg-9" maxlength="2" />
+            <input type="text" name="uf-prestacao-servico" id="uf-prestacao-servico" value="{{uf_prestacao_servico}}" required class="col-xs-12 col-sm-8 col-md-8 col-lg-9" maxlength="2" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="regime-especial-tributacao" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Regime Especial de Tributação (*)</label>
             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
-                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-0"{% if regime_especial_tributacao == 0 %} checked="checked"{% endif %} required value="0" /> Nenhum</label>
-                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-1"{% if regime_especial_tributacao == 1 %} checked="checked"{% endif %} required value="1" /> Microempresa Municipal</label>
-                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-2"{% if regime_especial_tributacao == 2 %} checked="checked"{% endif %} required value="2" /> Estimativa</label>
-                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-3"{% if regime_especial_tributacao == 3 %} checked="checked"{% endif %} required value="3" /> Sociedade de Profissionais</label>
-                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-4"{% if regime_especial_tributacao == 4 %} checked="checked"{% endif %} required value="4" /> Cooperativa</label>
-                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-5"{% if regime_especial_tributacao == 5 %} checked="checked"{% endif %} required value="5" /> Microempreendedor Individual (MEI)</label>
-                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-6"{% if regime_especial_tributacao == 6 %} checked="checked"{% endif %} required value="6" /> Art. 33, inc. II, item 8, Lei nº 691/84</label>
+                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-0"{% if regime_especial_tributacao == 0 %} checked="checked"{% endif %} required value="0" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Nenhum</label>
+                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-1"{% if regime_especial_tributacao == 1 %} checked="checked"{% endif %} required value="1" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Microempresa Municipal</label>
+                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-2"{% if regime_especial_tributacao == 2 %} checked="checked"{% endif %} required value="2" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Estimativa</label>
+                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-3"{% if regime_especial_tributacao == 3 %} checked="checked"{% endif %} required value="3" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Sociedade de Profissionais</label>
+                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-4"{% if regime_especial_tributacao == 4 %} checked="checked"{% endif %} required value="4" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Cooperativa</label>
+                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-5"{% if regime_especial_tributacao == 5 %} checked="checked"{% endif %} required value="5" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Microempreendedor Individual (MEI)</label>
+                <label><input type="radio" name="regime-especial-tributacao" id="regime-especial-tributacao-6"{% if regime_especial_tributacao == 6 %} checked="checked"{% endif %} required value="6" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Art. 33, inc. II, item 8, Lei nº 691/84</label>
             </div>
         </fieldset>
         <fieldset>
             <label for="opcao-simples" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Opção pelo Simples (*)</label>
             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
-                <label><input type="radio" name="opcao-simples" id="opcao-simples-0"{% if opcao_simples == 0 %} checked="checked"{% endif %} required value="0" /> Não-optante pelo Simples Nacional</label>
-                <label><input type="radio" name="opcao-simples" id="opcao-simples-1"{% if opcao_simples == 1 %} checked="checked"{% endif %} required value="1" /> Optante pelo Simples Nacional</label>
+                <label><input type="radio" name="opcao-simples" id="opcao-simples-0"{% if opcao_simples == 0 %} checked="checked"{% endif %} required value="0" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Não-optante pelo Simples Nacional</label>
+                <label><input type="radio" name="opcao-simples" id="opcao-simples-1"{% if opcao_simples == 1 %} checked="checked"{% endif %} required value="1" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Optante pelo Simples Nacional</label>
             </div>
         </fieldset>
         <fieldset>
             <label for="incentivo-cultural" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Incentivo Cultural (*)</label>
             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
-                <label><input type="radio" name="incentivo-cultural" id="incentivo-cultural-0"{% if incentivo_cultural == 0 %} checked="checked"{% endif %} required value="0" /> Não</label>
-                <label><input type="radio" name="incentivo-cultural" id="incentivo-cultural-1"{% if incentivo_cultural == 1 %} checked="checked"{% endif %} required value="1" /> Sim</label>
+                <label><input type="radio" name="incentivo-cultural" id="incentivo-cultural-0"{% if incentivo_cultural == 0 %} checked="checked"{% endif %} required value="0" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Não</label>
+                <label><input type="radio" name="incentivo-cultural" id="incentivo-cultural-1"{% if incentivo_cultural == 1 %} checked="checked"{% endif %} required value="1" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Sim</label>
             </div>
         </fieldset>
         <fieldset>
             <label for="codigo-servico-federal" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Código do Serviço Federal (*)</label>
-            <input type="text" name="codigo-servico-federal" id="codigo-servico-federal" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{codigo_servico_federal}}" required maxlength="4" />
+            <input type="text" name="codigo-servico-federal" id="codigo-servico-federal" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{codigo_servico_federal}}" required maxlength="4" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="codigo-pais" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Código do País</label>
-            <input type="text" name="codigo-pais" id="codigo-pais" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{codigo_pais}}" maxlength="5" />
+            <input type="text" name="codigo-pais" id="codigo-pais" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{codigo_pais}}" maxlength="5" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="codigo-beneficio" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Código do Benefício</label>
-            <input type="text" name="codigo-beneficio" id="codigo-beneficio" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{codigo_beneficio}}" maxlength="3" />
+            <input type="text" name="codigo-beneficio" id="codigo-beneficio" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{codigo_beneficio}}" maxlength="3" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="codigo-servico-municipal" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Código do Serviço Municipal (*)</label>
-            <input type="text" name="codigo-servico-municipal" id="codigo-servico-municipal" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{codigo_servico_municipal}}" required maxlength="6" />
+            <input type="text" name="codigo-servico-municipal" id="codigo-servico-municipal" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{codigo_servico_municipal}}" required maxlength="6" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="aliquota" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Alíquota (*)</label>
-            <input type="text" name="aliquota" id="aliquota" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{aliquota}}" required maxlength="5" />
+            <input type="text" name="aliquota" id="aliquota" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{aliquota}}" required maxlength="5" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="valor-servicos" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Valor Serviços (*)</label>
-            <input type="text" name="valor-servicos" id="valor-servicos" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_servicos}}" required maxlength="15" />
+            <input type="text" name="valor-servicos" id="valor-servicos" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_servicos}}" required maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="valor-deducao" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Valor Dedução</label>
-            <input type="text" name="valor-deducao" id="valor-deducao" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_deducao}}" maxlength="15" />
+            <input type="text" name="valor-deducao" id="valor-deducao" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_deducao}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="valor-desconto-condicionado" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Valor Desconto Condicionado</label>
-            <input type="text" name="valor-desconto-condicionado" id="valor-desconto-condicionado" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_desconto_condicionado}}" maxlength="15" />
+            <input type="text" name="valor-desconto-condicionado" id="valor-desconto-condicionado" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_desconto_condicionado}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="valor-desconto-incondicionado" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Valor Desconto Incondicionado</label>
-            <input type="text" name="valor-desconto-incondicionado" id="valor-desconto-incondicionado" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_desconto_incondicionado}}" maxlength="15" />
+            <input type="text" name="valor-desconto-incondicionado" id="valor-desconto-incondicionado" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_desconto_incondicionado}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="valor-cofins" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Valor COFINS</label>
-            <input type="text" name="valor-cofins" id="valor-cofins" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_cofins}}" maxlength="15" />
+            <input type="text" name="valor-cofins" id="valor-cofins" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_cofins}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="valor-csll" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Valor CSLL</label>
-            <input type="text" name="valor-csll" id="valor-csll" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_csll}}" maxlength="15" />
+            <input type="text" name="valor-csll" id="valor-csll" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_csll}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="valor-inss" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Valor INSS</label>
-            <input type="text" name="valor-inss" id="valor-inss" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_inss}}" maxlength="15" />
+            <input type="text" name="valor-inss" id="valor-inss" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_inss}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="valor-irpj" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Valor IRPJ</label>
-            <input type="text" name="valor-irpj" id="valor-irpj" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_irpj}}" maxlength="15" />
+            <input type="text" name="valor-irpj" id="valor-irpj" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_irpj}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="valor-pis-pasep" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Valor PIS/PASEP</label>
-            <input type="text" name="valor-pis-pasep" id="valor-pis-pasep" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_pis_pasep}}" maxlength="15" />
+            <input type="text" name="valor-pis-pasep" id="valor-pis-pasep" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_pis_pasep}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="valor-outras-retencoes-federais" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Valor Outras Retenções Federais</label>
-            <input type="text" name="valor-outras-retencoes-federais" id="valor-outras-retencoes-federais" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_outras_retencoes_federais}}" maxlength="15" />
+            <input type="text" name="valor-outras-retencoes-federais" id="valor-outras-retencoes-federais" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_outras_retencoes_federais}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="valor-iss" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Valor ISS</label>
-            <input type="text" name="valor-iss" id="valor-iss" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_iss}}" maxlength="15" />
+            <input type="text" name="valor-iss" id="valor-iss" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{valor_iss}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="iss-retido" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Iss Retido (*)</label>
             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
-                <label><input type="radio" name="iss-retido" id="iss-retido-0"{% if iss_retido == 0 %} checked="checked"{% endif %} required value="0" /> Nota Fiscal sem ISS retido</label>
-                <label><input type="radio" name="iss-retido" id="iss-retido-1"{% if iss_retido == 1 %} checked="checked"{% endif %} required value="1" /> ISS retido</label>
+                <label><input type="radio" name="iss-retido" id="iss-retido-0"{% if iss_retido == 0 %} checked="checked"{% endif %} required value="0" {% if allow_edit == false %}disabled="disabled"{% endif %} /> Nota Fiscal sem ISS retido</label>
+                <label><input type="radio" name="iss-retido" id="iss-retido-1"{% if iss_retido == 1 %} checked="checked"{% endif %} required value="1" {% if allow_edit == false %}disabled="disabled"{% endif %} /> ISS retido</label>
             </div>
         </fieldset>
         <fieldset>
             <label for="data-competencia" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Data Competência (*)</label>
-            <input type="text" name="data-competencia" id="data-competencia" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{data_competencia}}" required maxlength="10" />
+            <input type="text" name="data-competencia" id="data-competencia" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{data_competencia}}" required maxlength="10" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="codigo-obra" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Código Obra</label>
-            <input type="text" name="codigo-obra" id="codigo-obra" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{codigo_obra}}" maxlength="15" />
+            <input type="text" name="codigo-obra" id="codigo-obra" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{codigo_obra}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="anotacao-tecnica" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Anotação Responsabilidade Técnica</label>
-            <input type="text" name="anotacao-tecnica" id="anotacao-tecnica" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{anotacao_tecnica}}" maxlength="15" />
+            <input type="text" name="anotacao-tecnica" id="anotacao-tecnica" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{anotacao_tecnica}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="serie-rps-substituido" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Série RPS substituído</label>
-            <input type="text" name="serie-rps-substituido" id="serie-rps-substituido" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{serie_rps_substituido}}" maxlength="5" />
+            <input type="text" name="serie-rps-substituido" id="serie-rps-substituido" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{serie_rps_substituido}}" maxlength="5" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="numero-rps-substituido" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Número RPS substituído</label>
-            <input type="text" name="numero-rps-substituido" id="numero-rps-substituido" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{numero_rps_substituido}}" maxlength="15" />
+            <input type="text" name="numero-rps-substituido" id="numero-rps-substituido" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" value="{{numero_rps_substituido}}" maxlength="15" {% if allow_edit == false %}disabled="disabled"{% endif %} />
         </fieldset>
         <fieldset>
             <label for="discriminacao-servicos" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">Discriminação Serviços (*)</label>
-            <textarea name="discriminacao-servicos" id="discriminacao-servicos" rows="10" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" required>{{discriminacao_servicos}}</textarea>
+            <textarea name="discriminacao-servicos" id="discriminacao-servicos" rows="10" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" required {% if allow_edit == false %}disabled="disabled"{% endif %}>{{discriminacao_servicos}}</textarea>
         </fieldset>
         <fieldset>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3"></div>
-            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
+            <button type="submit" class="btn btn-success" {% if allow_edit == false %}disabled="disabled"{% endif %}><i class="fa fa-check"></i> Salvar</button>
         </fieldset>
     </form>
 {% endset %}

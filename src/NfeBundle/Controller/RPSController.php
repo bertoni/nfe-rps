@@ -4,6 +4,7 @@ namespace NfeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Yaml\Yaml;
 use NfeBundle\Entity\Rps;
 use NfeBundle\Entity\Importacao;
@@ -13,32 +14,40 @@ class RPSController extends Controller
 {
     public function listagemAction(Request $Request)
     {
-        $Rps = $this->getDoctrine()
-            ->getRepository('NfeBundle:Rps')
-            ->findBy(array(), array('data_criacao' => 'DESC'));
-        
-        $rps = array();
-        if (is_array($Rps) && count($Rps)) {
-            foreach ($Rps as $itemRps) {
-                $rps[] = array(
-                    'id_rps'                => $itemRps->getIdRps(),
-                    'identificacao_venda'   => $itemRps->getIdentificacaoVenda(),
-                    'nome_tomador'          => $itemRps->getNomeTomador(),
-                    'discriminacao_servico' => $itemRps->getDiscriminacaoServico(),
-                    'valor_servicos'        => $itemRps->getValorServicos(),
-                    'data_criacao'          => $itemRps->getDataCriacao()->format('d/m/Y H:i:s'),
-                    'id_lote_rps'           => $itemRps->getIdLoteRps(),
-                    'data_emissao'          => $itemRps->getDataEmissao()->format('d/m/Y'),
-                    'serie_rps'             => $itemRps->getSerieRps(),
-                    'numero_nf'             => $itemRps->getNumeroNf()
-                );
-            }
-        }
-        
-        return $this->render(
-            'NfeBundle:Page:rps-listagem.html.twig',
-            array('rps' => $rps)
-        );
+        return $this->render('NfeBundle:Page:rps-listagem.html.twig');
+    }
+
+    public function listagemPaginacaoAction($page, Request $Request)
+    {
+      $qtd_per_page = 20;
+      $search_begin = ($page < 2 ? 0 : (($page-1) * $qtd_per_page));
+      $content      = '';
+      $twig         = $this->container->get('templating');
+
+      $Rps = $this->getDoctrine()
+          ->getRepository('NfeBundle:Rps')
+          ->findBy(array(), array('id_rps' => 'DESC'), $qtd_per_page, $search_begin);
+      if (is_array($Rps) && count($Rps)) {
+          foreach ($Rps as $itemRps) {
+              $rps = array(
+                  'id_rps'                => $itemRps->getIdRps(),
+                  'identificacao_venda'   => $itemRps->getIdentificacaoVenda(),
+                  'nome_tomador'          => $itemRps->getNomeTomador(),
+                  'discriminacao_servico' => $itemRps->getDiscriminacaoServico(),
+                  'valor_servicos'        => $itemRps->getValorServicos(),
+                  'data_criacao'          => $itemRps->getDataCriacao()->format('d/m/Y H:i:s'),
+                  'id_lote_rps'           => $itemRps->getIdLoteRps(),
+                  'data_emissao'          => $itemRps->getDataEmissao()->format('d/m/Y'),
+                  'serie_rps'             => $itemRps->getSerieRps(),
+                  'numero_nf'             => $itemRps->getNumeroNf(),
+                  'codigo_verificacao'    => $itemRps->getCodigoVerificacao(),
+                  'link_nf'               => $itemRps->getLinkNf()
+              );
+              $content .= $twig->render('NfeBundle:Include:rps-linha.html.twig', array('itemrps' => $rps));
+          }
+      }
+
+      return new Response($content, 200);
     }
 
     public function editarAction($id, Request $Request)
@@ -46,7 +55,7 @@ class RPSController extends Controller
         $Rps = $this->getDoctrine()
             ->getRepository('NfeBundle:Rps')
             ->find($id);
-        
+
         if (!$Rps instanceof Rps) {
             $this->addFlash(
                 'notice',
@@ -54,7 +63,15 @@ class RPSController extends Controller
             );
             return $this->redirectToRoute('nfe_rps_listagem', array(), 302);
         }
-        
+
+        if (strlen($Rps->getNumeroNf())) {
+          $this->addFlash(
+              'notice',
+              'O RPS não já foi emitido e não pode ser alterado'
+          );
+          return $this->redirectToRoute('nfe_rps_listagem', array(), 302);
+        }
+
         if ($Request->get('identificacao-venda') && $Request->get('id') == $id) {
             $identificacao_venda             = $Request->get('identificacao-venda');
             $tipo_rps                        = $Request->get('tipo-rps');
@@ -151,18 +168,17 @@ class RPSController extends Controller
                     ->setSerieRpsSubstituido(!empty($serie_rps_substituido) ? $serie_rps_substituido : null)
                     ->setNumeroRpsSusbtituido(!empty($numero_rps_substituido) ? $numero_rps_substituido : null)
                     ->setDiscriminacaoServico($discriminacao_servicos);
-                
+
                 $this->getDoctrine()->getManager()->flush();
+                $this->addFlash('success', 'Dados salvos com sucesso');
             } catch (\Exception $e) {
-                $this->addFlash(
-                    'notice',
-                    $e->getMessage()
-                );
+                $this->addFlash('notice', $e->getMessage());
             }
-            
+
         }
-        
+
         $data = array(
+            'allow_edit'                      => true,
             'id'                              => $Rps->getIdRps(),
             'identificacao_venda'             => $Rps->getIdentificacaoVenda(),
             'tipo_rps'                        => $Rps->getTipoRps(),
@@ -212,7 +228,11 @@ class RPSController extends Controller
             'numero_rps_substituido'          => $Rps->getNumeroRpsSusbtituido(),
             'discriminacao_servicos'          => $Rps->getDiscriminacaoServico()
         );
-        
+
+        if (strlen($Rps->getNumeroNf())) {
+          $data['allow_edit'] = false;
+        }
+
         return $this->render('NfeBundle:Page:rps-edicao.html.twig', $data);
     }
 
@@ -232,7 +252,7 @@ class RPSController extends Controller
                 );
             }
         }
-    
+
         return $this->render(
             'NfeBundle:Page:importacao-listagem.html.twig',
             array('importacao' => $importacao)
@@ -253,17 +273,17 @@ class RPSController extends Controller
             if ($file->getError()) {
                 $erro .= '<li>Arquivo não importado</li>';
             }
-            
+
             if (!strlen($erro)) {
                 $newFile = $file->move(__DIR__ . '/../Resources/public/upload/csv', time() . '.csv');
                 $Importacao = new Importacao();
                 $Importacao->setDataImportacao(new \DateTime())
                     ->setNomeArquivo($newFile->getFilename());
-                
+
                 try {
                     $this->getDoctrine()->getManager()->persist($Importacao);
                     $this->getDoctrine()->getManager()->flush();
-                    
+
                     register_shutdown_function(
                         'NfeBundle\Business\UploadRpsProcess::staticProcessSheetRps',
                         $Importacao,
@@ -271,13 +291,13 @@ class RPSController extends Controller
                         $this->getDoctrine()->getManager(),
                         $this->get('logger')
                     );
-                    
+
                     return $this->render('NfeBundle:Page:upload-csv-sucesso.html.twig');
                 } catch (\Exception $e) {
                     $erro .= '<li>Não foi possível fazer o upload do arquivo</li>';
                     $erro .= '<li>' . $e->getMessage() . '</li>';
                 }
-                
+
             }
         }
         return $this->render('NfeBundle:Page:upload-csv.html.twig', array('erro' => $erro));

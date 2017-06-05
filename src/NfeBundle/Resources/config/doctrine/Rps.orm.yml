@@ -150,6 +150,11 @@ NfeBundle\Entity\Rps:
             length: 8
             nullable: true
             fixed: true
+        codigo_verificacao:
+            type: text
+            length: 9
+            nullable: true
+            fixed: true
         numero_nf:
             type: bigint
             length: 10
@@ -273,6 +278,10 @@ NfeBundle\Entity\Rps:
         endereco_tomador:
             type: text
             length: 125
+            nullable: true
+        link_nf:
+            type: text
+            length: 255
             nullable: true
     manyToOne:
         lote_rps:

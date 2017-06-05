@@ -1,0 +1,17 @@
+<tr>
+    <td>{{lote.id_lote_rps}}</td>
+    <td>{{lote.data_cadastro}}</td>
+    <td>{% if lote.enviado == 0 %}Não{% else %}Sim{% endif %}</td>
+    <td>{{lote.data_periodo_inicial}}</td>
+    <td>{{lote.data_periodo_inicial}}</td>
+    <td>{% if lote.valor_total != "" %}{{(lote.valor_total/100)|number_format(2, ',', '.')}}{% endif %}</td>
+    <td>{% if lote.valor_deducao != "" %}{{(lote.valor_deducao/100)|number_format(2, ',', '.')}}{% endif %}</td>
+    <td>{% if lote.valor_iss != "" %}{{(lote.valor_iss/100)|number_format(2, ',', '.')}}{% endif %}</td>
+    <td>{% if lote.valor_credito != "" %}{{(lote.valor_credito/100)|number_format(2, ',', '.')}}{% endif %}</td>
+    <td>
+        <button class="btn btn-primary arquivo-lote-rps" data-url="{{path('nfe_lote_rps_arquivo', {id: lote.id_lote_rps})}}"><i class="fa fa-file-text-o"></i> Arquivo Lote RPS</button>
+        {% if lote.enviado == 0 %}
+            <button class="btn btn-primary import-return" data-url="{{path('nfe_lote_rps_return', {id: lote.id_lote_rps})}}"><i class="fa fa-file-o"></i> Upload Retorno</button>
+        {% endif %}
+    </td>
+</tr>

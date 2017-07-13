@@ -264,8 +264,8 @@ class RPSController extends Controller
         $erro = '';
         $file = $Request->files->get('file');
         if ($file) {
-            if ($file->getClientMimeType() != 'text/csv') {
-                $erro .= '<li>Formato incorreto</li>';
+            if ($file->getClientMimeType() != 'text/csv' && $file->getClientMimeType() != 'application/vnd.ms-excel') {
+                $erro .= '<li>Formato incorreto: ' . $file->getClientMimeType() . '</li>';
             }
             if (!$file->isValid()) {
                 $erro .= '<li>Arquivo Inválido</li>';

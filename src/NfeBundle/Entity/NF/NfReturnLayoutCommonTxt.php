@@ -321,7 +321,7 @@ class NfReturnLayoutCommonTxt extends NfReturnLayout
     if (!preg_match('/^.{50}$/', substr($data_rps, 1141, 50))) {
       throw new \Exception("\nCidade do Tomador no detalhe de RPS inválido\n");
     }
-    if (!preg_match('/^[a-zA-Z]{2}$/', substr($data_rps, 1191, 2))) {
+    if (!preg_match('/^([a-zA-Z]{2}|\s{2})$/', substr($data_rps, 1191, 2))) {
       throw new \Exception("\nUF do Tomador no detalhe de RPS inválido\n");
     }
     if (!preg_match('/^[0-9]{8}$/', substr($data_rps, 1193, 8))) {
